@@ -50,12 +50,15 @@
   }
 
   .account-profile-details-item-datum {
-    color: var(--body-text-color);
     margin-right: 5px;
     font-weight: 600;
   }
 
-  @media (max-width: 767px) {
+  .account-profile-details-item:not(:hover):not(:focus) .account-profile-details-item-datum {
+    color: var(--body-text-color);
+  }
+
+  @media (max-width: 374px) {
     .account-profile-details {
       margin-bottom: 0;
     }
