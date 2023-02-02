@@ -47,6 +47,7 @@
     grid-column-gap: 15px;
     grid-row-gap: 5px;
     padding: 20px;
+    padding-bottom: 0;
     justify-content: center;
     border-bottom: var(--main-border-size) solid var(--main-border);
   }
@@ -81,11 +82,13 @@
     }
   }
 
-  @media (max-width: 240px) {
+  @media (max-width: 400px) {
     .account-profile-grid {
-      grid-template-areas: "avatar      name"
-                           "avatar      label"
+      grid-template-areas: "avatar      avatar"
+                           "avatar      avatar"
+                           "name    name"
                            "username    username"
+                           "label       label"
                            "followed-by followed-by"
                            "follow      follow"
                            "note        note"
@@ -93,7 +96,6 @@
                            "details     details";
       grid-template-columns: min-content 1fr;
       grid-column-gap: 5px;
-      grid-row-gap: 0;
     }
   }
 
