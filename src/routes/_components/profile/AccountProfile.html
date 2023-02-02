@@ -83,20 +83,15 @@
     }
   }
 
-  @media (max-width: 340px) {
+  @media (max-width: 400px) {
     .account-profile-grid {
-      grid-template-areas: "avatar      avatar"
-                           "avatar      avatar"
-                           "name    name"
-                           "username    username"
-                           "label       label"
-                           "followed-by followed-by"
-                           "follow      follow"
-                           "note        note"
-                           "meta        meta"
-                           "details     details";
-      grid-template-columns: min-content 1fr;
-      grid-column-gap: 5px;
+      grid-template-areas: "avatar      name name label"
+                           "avatar      username username username"
+                           "followed-by followed-by follow follow"
+                           "note        note note note"
+                           "meta        meta meta meta"
+                           "details     details details details";
+      grid-template-columns: min-content 1fr min-content min-content;
     }
   }
 
