@@ -33,8 +33,6 @@
   }
 </style>
 <script>
-  import IconButton from '../IconButton.html'
-  import { FOLLOW_BUTTON_ANIMATION } from '../../_static/animations.js'
   import { store } from '../../_store/store.js'
   import { setAccountFollowed } from '../../_actions/follow.js'
   import { setAccountBlocked } from '../../_actions/block.js'
@@ -63,9 +61,6 @@
           const newFollowingValue = !(following || followRequested)
           if (!account.locked) { // be optimistic, show the user that it succeeded
             this.set({ overrideFollowing: newFollowingValue })
-          }
-          if (newFollowingValue) {
-            this.refs.icon.animate(FOLLOW_BUTTON_ANIMATION)
           }
           await setAccountFollowed(accountId, newFollowingValue)
         }
@@ -104,9 +99,6 @@
       pressed: ({ blocking, following, followRequested }) => (
         !blocking && (following || followRequested)
       )
-    },
-    components: {
-      IconButton
     }
   }
 </script>
