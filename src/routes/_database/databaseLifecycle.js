@@ -100,9 +100,4 @@ if (process.browser) {
       })
     }
   })
-
-  // Clean up files that Tesseract.js may have stored. Originally we allowed it to store
-  // stuff in IDB, but now we don't.
-  // TODO: we can remove this after it's been deployed for a while
-  scheduleIdleTask(() => del('./eng.traineddata'))
 }

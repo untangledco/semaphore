@@ -103,7 +103,6 @@
   import LengthGauge from '../../LengthGauge.html'
   import LengthIndicator from '../../LengthIndicator.html'
   import { length } from 'stringz'
-  import { runTesseract } from '../../../_utils/runTesseract.js'
   import SvgIcon from '../../SvgIcon.html'
   import { toast } from '../../toast/toast.js'
   import { formatIntl } from '../../../_utils/formatIntl.js'
@@ -193,16 +192,6 @@
           }
           const file = await database.getCachedMediaFile(mediaId)
           let text
-          if (file) { // Avoid downloading from the network a file that the user *just* uploaded
-            const fileUrl = URL.createObjectURL(file)
-            try {
-              text = await runTesseract(fileUrl, onProgress)
-            } finally {
-              URL.revokeObjectURL(fileUrl)
-            }
-          } else {
-            text = await runTesseract(url, onProgress)
-          }
           const { media, index, realm } = this.get()
           if (media[index].description !== text) {
             media[index].description = text

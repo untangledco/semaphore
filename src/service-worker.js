@@ -14,14 +14,6 @@ const WEBPACK_ASSETS = `webpack_assets_${timestamp}`
 
 const ON_DEMAND_CACHE = [
   {
-    regex: /tesseract-core\.wasm/,
-    cache: WEBPACK_ASSETS
-  },
-  {
-    regex: /traineddata\.gz/,
-    cache: ASSETS
-  },
-  {
     regex: /\$polyfill\$/,
     cache: WEBPACK_ASSETS
   },
@@ -51,7 +43,6 @@ const assets = __assets__
 // also contains '/index.html' for some reason
 const webpackAssets = __shell__
   .filter(filename => !filename.endsWith('.map')) // don't bother with sourcemaps
-  .filter(filename => !filename.includes('tesseract-core.wasm')) // cache on-demand
   .filter(filename => !filename.includes('LICENSE')) // don't bother with license files
   .filter(filename => !filename.includes('$polyfill$')) // polyfills are cached dynamically
 

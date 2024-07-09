@@ -46,8 +46,6 @@
     "svelte": "^2.16.1",
     "svelte-extras": "^2.0.2",
     "svgo": "^2.8.0",
-    "tesseract.js": "^2.1.5",
-    "tesseract.js-core": "^2.2.0",
     "tiny-queue": "^0.2.1",
     "webpack": "^5.75.0"
   },
