@@ -4,7 +4,6 @@
 /mastodon
 /mastodon.log
 /src/template.html
-/static/*.css
 /static/icons.svg
 /static/inline-script.js.map
 /static/emoji-*.json

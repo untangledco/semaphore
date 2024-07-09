@@ -12,7 +12,6 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 const globalScss = path.join(__dirname, '../src/scss/global.scss')
 const defaultThemeScss = path.join(__dirname, '../src/scss/themes/_default.scss')
-const customScrollbarScss = path.join(__dirname, '../src/scss/custom-scrollbars.scss')
 const themesScssDir = path.join(__dirname, '../src/scss/themes')
 const assetsDir = path.join(__dirname, '../static')
 
@@ -22,10 +21,7 @@ async function renderCss (file) {
 
 async function compileGlobalSass () {
   const mainStyle = (await Promise.all([defaultThemeScss, globalScss].map(renderCss))).join('')
-  const scrollbarStyle = (await renderCss(customScrollbarScss))
-
-  return `<style>\n${mainStyle}</style>\n` +
-    `<style media="all" id="theScrollbarStyle">\n${scrollbarStyle}</style>\n`
+  return `<style>\n${mainStyle}</style>`
 }
 
 async function compileThemesSass () {
