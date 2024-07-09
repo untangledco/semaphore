@@ -3,7 +3,6 @@ import childProcessPromise from 'child-process-promise'
 import path from 'path'
 import fs from 'fs'
 import { DB_NAME, DB_PASS, DB_USER, mastodonDir, env } from './mastodon-config.js'
-import mkdirp from 'mkdirp'
 import esMain from 'es-main'
 
 const exec = childProcessPromise.exec
@@ -36,7 +35,7 @@ async function setupMastodonDatabase () {
 
   const tgzFile = path.join(dir, '../tests/fixtures/system.tgz')
   const systemDir = path.join(mastodonDir, 'public/system')
-  await mkdirp(systemDir)
+  await fs.mkdir(systemDir, { recursive: true });
   await exec(`tar -xzf "${tgzFile}"`, { cwd: systemDir })
 }
 
