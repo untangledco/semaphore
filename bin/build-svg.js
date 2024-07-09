@@ -1,19 +1,16 @@
 import svgs from './svgs.js'
 import path from 'path'
 import fs from 'fs'
-import { promisify } from 'util'
 import { optimize } from 'svgo'
 import cheerioPackage from 'cheerio'
 
 const { default: $ } = cheerioPackage
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
 
 async function readSvg (svg) {
   const filepath = path.join(__dirname, '../', svg.src)
-  const content = await readFile(filepath, 'utf8')
+  const content = fs.readFileSync(filepath, 'utf8')
   const optimized = (await optimize(content, { multipass: true }))
   const $optimized = $(optimized.data)
   const $path = $optimized.find('path, circle').removeAttr('fill')
@@ -35,7 +32,7 @@ export async function buildSvg () {
   const inlineOutput = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">${inlineSvgStrings}</svg>`
   const regularOutput = `<svg xmlns="http://www.w3.org/2000/svg">${regularSvgStrings}</svg>`
 
-  await writeFile(path.resolve(__dirname, '../static/icons.svg'), regularOutput, 'utf8')
+  fs.writeFileSync(path.resolve(__dirname, '../static/icons.svg'), regularOutput, 'utf8')
 
   return inlineOutput
 }
