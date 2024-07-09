@@ -6,9 +6,8 @@ import './routes/_utils/forceOnline.js'
 import { mark, stop } from './routes/_utils/marks.js'
 import { loadPolyfills } from './routes/_utils/polyfills/loadPolyfills.js'
 import { loadNonCriticalPolyfills } from './routes/_utils/polyfills/loadNonCriticalPolyfills.js'
-import idbReady from 'safari-14-idb-fix/dist/esm'
 
-Promise.all([idbReady(), loadPolyfills()]).then(() => {
+loadPolyfills().then(() => {
   mark('sapperStart')
   sapper.start({ target: document.querySelector('#sapper') })
   stop('sapperStart')
