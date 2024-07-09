@@ -23,7 +23,6 @@ const createConfig = (input) => {
       'fs',
       'path',
       'sapper/config/webpack.js',
-      'terser-webpack-plugin',
       'webpack',
       'webpack-bundle-analyzer'
     ]

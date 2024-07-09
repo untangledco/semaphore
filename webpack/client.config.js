@@ -2,7 +2,6 @@ import { DEFAULT_LOCALE, LOCALE } from '../src/routes/_static/intl.js'
 import path from 'path'
 import webpack from 'webpack'
 import config from 'sapper/config/webpack.js'
-import terser from './terser.config.js'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { mode, dev, resolve, inlineSvgs } from './shared.config.js'
 import { version } from '../package.json'
@@ -79,10 +78,6 @@ export default {
   optimization: dev
     ? {}
     : {
-        minimize: !process.env.DEBUG,
-        minimizer: [
-          terser()
-        ],
         // TODO: we should be able to enable this, but Sapper breaks if we do so
         // // isolate runtime chunk to avoid excessive cache invalidations https://webpack.js.org/guides/caching/
         // runtimeChunk: 'single',

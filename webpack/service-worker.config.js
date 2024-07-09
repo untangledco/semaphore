@@ -2,7 +2,6 @@ import { LOCALE } from '../src/routes/_static/intl'
 import path from 'path'
 
 import config from 'sapper/config/webpack.js'
-import terser from './terser.config'
 import webpack from 'webpack'
 import { mode, dev, resolve } from './shared.config'
 
@@ -12,14 +11,6 @@ export default {
   resolve,
   mode,
   devtool: dev ? 'inline-source-map' : 'source-map',
-  optimization: dev
-    ? {}
-    : {
-        minimize: !process.env.DEBUG,
-        minimizer: [
-          terser()
-        ]
-      },
   module: {
     rules: [
       {
