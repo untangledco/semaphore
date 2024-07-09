@@ -7,7 +7,6 @@
 /static/icons.svg
 /static/inline-script.js.map
 /static/emoji-*.json
-/static/manifest.json
 /static/TwemojiCountryFlags.woff2
 /src/inline-script/checksum.js
 yarn-error.log

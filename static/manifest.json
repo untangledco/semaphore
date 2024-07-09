@@ -1,0 +1,154 @@
+{
+    "background_color": "#6248CA",
+    "theme_color": "#6248CA",
+    "name": "Semaphore for Mastodon",
+    "short_name": "Semaphore",
+    "description": "An alternative web client for Mastodon, focused on speed and simplicity.",
+    "categories": [
+        "social"
+    ],
+    "display": "standalone",
+    "start_url": "/?pwa=true",
+    "share_target": {
+        "action": "/share",
+        "method": "POST",
+        "enctype": "multipart/form-data",
+        "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url",
+            "files": [
+                {
+                    "name": "file",
+                    "accept": [
+                        "audio/*",
+                        "image/*",
+                        "video/*"
+                    ]
+                }
+            ]
+        }
+    },
+    "icons": [
+        {
+            "src": "icon-48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-44.png",
+            "sizes": "44x44",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-50.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-150.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-48-maskable.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-72-maskable.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-96-maskable.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-144-maskable.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-192-maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-512-maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "New toot",
+            "url": "/?pwa=true&compose=true",
+            "icons": [
+                {
+                    "src": "/icon-shortcut-fa-pencil.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Notifications",
+            "url": "/notifications?pwa=true",
+            "icons": [
+                {
+                    "src": "/icon-shortcut-fa-bell.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot-540-720-1.png",
+            "type": "image/png",
+            "sizes": "540x720"
+        },
+        {
+            "src": "screenshot-540-720-2.png",
+            "type": "image/jpeg",
+            "sizes": "540x720"
+        },
+        {
+            "src": "screenshot-540-720-3.png",
+            "type": "image/jpeg",
+            "sizes": "540x720"
+        }
+    ]
+}
