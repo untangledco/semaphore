@@ -1,4 +1,4 @@
-<img height="100" width="100" src="https://user-images.githubusercontent.com/2445413/213867232-8bd90121-8812-446e-8c2f-d4000388d449.png" alt=""/> 
+<img height="100" width="100" src="https://user-images.githubusercontent.com/2445413/213867232-8bd90121-8812-446e-8c2f-d4000388d449.png" alt=""/>
 
 # Semaphore
 
@@ -17,8 +17,6 @@ Semaphore continues the [Pinafore project](https://github.com/nolanlawson/pinafo
 ## Changelog
 
 For a changelog, see the [GitHub releases](http://github.com/NickColley/semaphore/releases/).
-
-For a list of breaking changes, see [BREAKING_CHANGES.md](https://github.com/NickColley/semaphore/blob/main/BREAKING_CHANGES.md).
 
 ## Developing and testing
 
