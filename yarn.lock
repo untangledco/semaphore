@@ -2700,11 +2700,6 @@ duplexer@^0.1.2:
   resolved "https://registry.npmjs.org/duplexer/-/duplexer-0.1.2.tgz"
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
 
-eases-jsnext@^1.0.9:
-  version "1.0.10"
-  resolved "https://registry.npmjs.org/eases-jsnext/-/eases-jsnext-1.0.10.tgz"
-  integrity sha512-1bO1+FIuqtOZpcyoIJuTnw8PU9X+RHHA248mZ1m+CPiiKFGCiNLWecITlhO4DXe7whZmBoJyfKwUoMW0KK5mNw==
-
 eastasianwidth@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz"
@@ -6412,42 +6407,6 @@ svelte-loader@^2.13.6:
   dependencies:
     loader-utils "^1.1.0"
     svelte-dev-helper "^1.1.9"
-
-svelte-transitions-draw@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/svelte-transitions-draw/-/svelte-transitions-draw-1.0.0.tgz"
-  integrity sha512-yRE/Y8+kN492It7L4xX+WxPI31mO9CJG+asxxjhc8sAY4xf/HwtvY+rPyA/i5J7QqYsZvPoRubiZRHvVrQc5lw==
-  dependencies:
-    eases-jsnext "^1.0.9"
-
-svelte-transitions-fade@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/svelte-transitions-fade/-/svelte-transitions-fade-1.0.0.tgz"
-  integrity sha512-q4plhSRbtciaB6cqD4J/w3GQsFYTK2QDeIqEgOkLnbQJCjY+1MmvjYTUTMDcqQARwyImGd1587miLeK4IBqpQg==
-
-svelte-transitions-fly@^1.0.1:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/svelte-transitions-fly/-/svelte-transitions-fly-1.0.4.tgz"
-  integrity sha512-OIVVCloqOQZY1GNVMhCP2StWkKrd+FDiZuD/+SSyN+eWhhwaA+C/kfeYGHQMCC0wPsVCPv9fottojPQKeMVdDA==
-  dependencies:
-    eases-jsnext "^1.0.9"
-
-svelte-transitions-slide@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/svelte-transitions-slide/-/svelte-transitions-slide-1.0.0.tgz"
-  integrity sha512-8vkDHkB032J6xGyl6HVTkb/pxH+0lEoxaX/HqrILhNgw6SfD7ptu+TE8up4iOjw8f9/SGWtR31PIGAAtkTsToA==
-  dependencies:
-    eases-jsnext "^1.0.9"
-
-svelte-transitions@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/svelte-transitions/-/svelte-transitions-1.2.0.tgz"
-  integrity sha512-8KRhNi75bx7Z5s6kJMXv4s8mizwttktm//uA3CvVSBcvwI9tTgq4QXOiYjVRcyQBq/jfLpnnwT19h/WEI7ZF8Q==
-  dependencies:
-    svelte-transitions-draw "^1.0.0"
-    svelte-transitions-fade "^1.0.0"
-    svelte-transitions-fly "^1.0.1"
-    svelte-transitions-slide "^1.0.0"
 
 svelte@^2, svelte@^2.16.1, svelte@>1.44.0:
   version "2.16.1"

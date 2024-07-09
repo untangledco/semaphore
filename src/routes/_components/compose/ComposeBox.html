@@ -5,8 +5,7 @@
   <div class="{computedClassName} {hideAndFadeIn}">
     <ComposeAuthor {realm} {dialogId} />
     {#if contentWarningShown}
-      <div class="compose-content-warning-wrapper"
-           transition:slide="{duration: 333}">
+      <div class="compose-content-warning-wrapper">
         <ComposeContentWarning {realm} {contentWarning} />
       </div>
     {/if}
@@ -14,8 +13,7 @@
     <ComposeLengthGauge {length} {overLimit} />
     <ComposeAutosuggest {realm} {text} {dialogId} />
     {#if poll && poll.options && poll.options.length}
-      <div class="compose-poll-wrapper"
-           transition:slide="{duration: 333}">
+      <div class="compose-poll-wrapper">
         <ComposePoll {realm} {poll} />
       </div>
     {/if}
@@ -107,7 +105,6 @@
   import { measureText } from '../../_utils/measureText.js'
   import { POST_PRIVACY_OPTIONS } from '../../_static/statuses.js'
   import { store } from '../../_store/store.js'
-  import { slide } from '../../_transitions/slide.js'
   import { postStatus, insertHandleForReply, setReplySpoiler, setReplyVisibility } from '../../_actions/compose.js'
   import { classname } from '../../_utils/classname.js'
   import { POLL_EXPIRY_DEFAULT } from '../../_static/polls.js'
@@ -186,9 +183,6 @@
       contentWarningShown: ({ composeData }) => composeData.contentWarningShown,
       contentWarning: ({ composeData }) => composeData.contentWarning || '',
       sensitive: ({ composeData }) => !!composeData.sensitive
-    },
-    transitions: {
-      slide
     },
     methods: {
       async doPostStatus () {
