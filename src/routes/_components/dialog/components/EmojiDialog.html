@@ -65,8 +65,6 @@
   import { registerShadowRoot, unregisterShadowRoot } from '../../../_thirdparty/a11y-dialog/a11y-dialog.js'
   import { doubleRAF } from '../../../_utils/doubleRAF.js'
   import { convertCustomEmojiToEmojiPickerFormat } from '../../../_utils/convertCustomEmojiToEmojiPickerFormat.js'
-  import { supportsFocusVisible } from '../../../_utils/supportsFocusVisible.js'
-  import { importFocusVisible } from '../../../_utils/polyfills/asyncPolyfills.js'
   import { emojiPickerI18n, emojiPickerDataSource, emojiPickerLocale } from '../../../_static/emojiPickerIntl.js'
 
   export default {
@@ -87,11 +85,6 @@
             picker.shadowRoot.querySelector('input').focus()
           })
         })
-      }
-      if (!supportsFocusVisible()) {
-        await importFocusVisible()
-        /* global applyFocusVisiblePolyfill */
-        applyFocusVisiblePolyfill(picker.shadowRoot)
       }
     },
     components: {
