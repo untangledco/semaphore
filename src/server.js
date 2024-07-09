@@ -8,7 +8,5 @@ const app = express()
 
 app.use(express.static('static'))
 app.use(sapper.middleware())
-
-app.listen(PORT, () => console.log(`listening on port ${PORT}`))
-
+app.listen(PORT)
 process.on('SIGINT', () => process.exit(0))
