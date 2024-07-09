@@ -1,5 +1,4 @@
 import { store } from '../store.js'
-import { doEmojiSearch } from '../../_actions/autosuggestEmojiSearch.js'
 import { doAccountSearch } from '../../_actions/autosuggestAccountSearch.js'
 import { doHashtagSearch } from '../../_actions/autosuggestHashtagSearch.js'
 
@@ -28,9 +27,7 @@ export function autosuggestObservers () {
       return
     }
 
-    if (autosuggestSearchText.startsWith(':')) { // emoji
-      lastSearch = doEmojiSearch(autosuggestSearchText)
-    } else if (autosuggestSearchText.startsWith('#')) { // hashtag
+    if (autosuggestSearchText.startsWith('#')) { // hashtag
       lastSearch = doHashtagSearch(autosuggestSearchText)
     } else { // account
       lastSearch = doAccountSearch(autosuggestSearchText)

@@ -1,19 +1,8 @@
-import * as emojiDatabase from './emojiDatabase.js'
-
-// Add a nice little tooltip to native emoji showing the shortcodes you can type to search for them
-// TODO: titles are not accessible to keyboard users or touch users, and also they don't show up
-// if they're part of a link... should we have another system?
+// TODO(otl): this a noop until we fix up callers of addEmojiTooltips
 export async function addEmojiTooltips (domNode) {
   if (!domNode) {
     return
   }
   const emojis = domNode.querySelectorAll('.inline-emoji')
-  if (emojis.length) {
-    await Promise.all(Array.from(emojis).map(async emoji => {
-      const emojiData = await emojiDatabase.findByUnicodeOrName(emoji.textContent)
-      if (emojiData && emojiData.shortcodes) {
-        emoji.title = emojiData.shortcodes.map(_ => `:${_}:`).join(', ')
-      }
-    }))
-  }
+  if (emojis.length) {}
 }
