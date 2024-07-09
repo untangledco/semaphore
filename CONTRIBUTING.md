@@ -16,15 +16,6 @@ Then run:
 
     PORT=4002 node server.js
 
-### Docker
-
-To build a Docker image for production:
-
-    docker build .
-    docker run -d -p 4002:4002 [your-image]
-
-Now Semaphore is running at `localhost:4002`.
-
 ### Updating
 
 To keep your version of Semaphore up to date, you can use `git` to check out the latest tag:
