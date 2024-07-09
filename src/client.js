@@ -1,7 +1,6 @@
 import * as sapper from '../__sapper__/client.js'
 import './routes/_utils/serviceWorkerClient.js'
 import './routes/_utils/historyEvents.js'
-import './routes/_utils/loadingMask.js'
 import './routes/_utils/forceOnline.js'
 import { mark, stop } from './routes/_utils/marks.js'
 import { loadPolyfills } from './routes/_utils/polyfills/loadPolyfills.js'
