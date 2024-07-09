@@ -5,13 +5,11 @@ import './routes/_utils/loadingMask.js'
 import './routes/_utils/forceOnline.js'
 import { mark, stop } from './routes/_utils/marks.js'
 import { loadPolyfills } from './routes/_utils/polyfills/loadPolyfills.js'
-import { loadNonCriticalPolyfills } from './routes/_utils/polyfills/loadNonCriticalPolyfills.js'
 
 loadPolyfills().then(() => {
   mark('sapperStart')
   sapper.start({ target: document.querySelector('#sapper') })
   stop('sapperStart')
-  /* no await */ loadNonCriticalPolyfills()
 })
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)

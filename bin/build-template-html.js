@@ -1,4 +1,3 @@
-import chokidar from 'chokidar'
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'

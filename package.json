@@ -52,7 +52,6 @@
     "blurhash": "^1.1.5",
     "cheerio": "1.0.0-rc.10",
     "child-process-promise": "^2.2.1",
-    "chokidar": "^3.5.3",
     "circular-dependency-plugin": "^5.2.2",
     "compression": "^1.7.4",
     "country-flag-emoji-polyfill": "^0.1.4",
