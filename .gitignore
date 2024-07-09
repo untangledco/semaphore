@@ -14,5 +14,4 @@
 yarn-error.log
 
 .now
-.vercel
 /webpack/*.cjs

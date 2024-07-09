@@ -13,5 +13,4 @@ jobs:
           cache: 'yarn'
       - run: yarn --frozen-lockfile
       - run: yarn lint
-      - run: yarn test-vercel-json
       - run: yarn test-unit

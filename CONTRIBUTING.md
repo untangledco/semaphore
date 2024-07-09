@@ -208,9 +208,6 @@ This is also available locally after `yarn run build` at `.sapper/client/report.
 This section only applies to `beta.semaphore.social` and `semaphore.social`, not if you're hosting your own version of
 Semaphore.
 
-The site uses [Vercel](https://vercel.com). The `main` branch publishes to `beta.semaphore.social` and the `production`
-branch deploys to `semaphore.social`.
-
 ## Architecture
 
 See [Architecture.md](https://github.com/NickColley/semaphore/blob/main/docs/Architecture.md).

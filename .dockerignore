@@ -17,4 +17,3 @@ tests
 /static/manifest.json
 /src/inline-script/checksum.js
 yarn-error.log
-/vercel.json

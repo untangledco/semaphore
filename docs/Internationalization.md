@@ -15,5 +15,3 @@ the instance of Semaphore, it is either one language or another. To build in a p
 or
 
     LOCALE=fr yarn dev
-
-To host a localized version of Semaphore using Vercel, you can see this example: [buildCommand in vercel.json for Spanish](https://github.com/nvdaes/vercelPinafore/blob/45c70fb2088fe5f2380a729dab83e6f3ab4e6291/vercel.json#L9).
