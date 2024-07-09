@@ -57,11 +57,6 @@
   <h2>{intl.ui}</h2>
 
   <form class="ui-settings">
-    <label class="setting-group">
-      <input type="checkbox" id="choice-grayscale"
-             bind:checked="$enableGrayscale" on:change="onChange(event)">
-      {intl.grayscaleMode}
-    </label>
   </form>
   <p>
     {intl.wellnessFooter}
@@ -96,14 +91,12 @@
           disableFavCounts,
           disableNotificationBadge,
           disableRelativeTimestamps,
-          enableGrayscale
         } = this.store.get()
         document.querySelector('#choice-check-all').checked = disableFollowerCounts &&
           disableReblogCounts &&
           disableFavCounts &&
           disableNotificationBadge &&
-          disableRelativeTimestamps &&
-          enableGrayscale
+          disableRelativeTimestamps
       },
       onCheckAllChange (e) {
         const { checked } = e.target
@@ -113,7 +106,6 @@
           disableFavCounts: checked,
           disableNotificationBadge: checked,
           disableRelativeTimestamps: checked,
-          enableGrayscale: checked
         })
         this.store.save()
       },

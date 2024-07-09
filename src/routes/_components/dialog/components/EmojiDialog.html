@@ -10,7 +10,7 @@
       ref:picker
       locale={emojiPickerLocale}
       data-source={emojiPickerDataSource}
-      class={darkMode ? 'dark' : 'light'}
+      class="light"
       on:emoji-click="onEmojiSelected(event)"
       on:keydown="onPickerKeydown(event)"
     ></emoji-picker>
@@ -61,7 +61,6 @@
   import { show } from '../helpers/showDialog.js'
   import { close } from '../helpers/closeDialog.js'
   import { oncreate as onCreateDialog } from '../helpers/onCreateDialog.js'
-  import { isDarkTheme } from '../../../_utils/isDarkTheme.js'
   import 'emoji-picker-element/picker'
   import { registerShadowRoot, unregisterShadowRoot } from '../../../_thirdparty/a11y-dialog/a11y-dialog.js'
   import { doubleRAF } from '../../../_utils/doubleRAF.js'
@@ -74,19 +73,13 @@
     async oncreate () {
       onCreateDialog.call(this)
       const { customEmoji } = this.get()
-      const { enableGrayscale, isUserTouching } = this.store.get()
+      const { isUserTouching } = this.store.get()
       const { picker } = this.refs
       picker.customEmoji = customEmoji
       if (emojiPickerI18n) {
         picker.i18n = emojiPickerI18n
       }
-      // break into shadow DOM to fix grayscale in Wellness grayscale mode
-      if (enableGrayscale) {
-        const style = document.createElement('style')
-        style.textContent = '.emoji { filter: grayscale(100%); }'
-        picker.shadowRoot.appendChild(style)
-      }
-      registerShadowRoot(picker.shadowRoot)
+     registerShadowRoot(picker.shadowRoot)
       this.on('destroy', () => unregisterShadowRoot(picker.shadowRoot))
       if (!isUserTouching) { // auto focus the input on desktop
         doubleRAF(() => { // triple rAF because a11y tries to focus as well
@@ -110,7 +103,6 @@
       emojiPickerDataSource
     }),
     computed: {
-      darkMode: ({ $currentTheme }) => isDarkTheme($currentTheme),
       customEmoji: ({ $currentCustomEmoji, $autoplayGifs }) => (
         convertCustomEmojiToEmojiPickerFormat($currentCustomEmoji, $autoplayGifs)
       )

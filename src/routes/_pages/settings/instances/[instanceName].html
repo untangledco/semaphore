@@ -4,8 +4,6 @@
   {#if verifyCredentials}
     <h2>{intl.loggedInAs}</h2>
     <InstanceUserProfile {verifyCredentials} />
-    <h2>{intl.theme}</h2>
-    <ThemeSettings {instanceName} />
     <h2>{intl.homeTimelineFilters}</h2>
     <HomeTimelineFilterSettings {instanceName} />
     <h2>{intl.notificationFilters}</h2>
@@ -31,7 +29,6 @@
   import HomeTimelineFilterSettings from '../../../_components/settings/instance/HomeTimelineFilterSettings.html'
   import NotificationFilterSettings from '../../../_components/settings/instance/NotificationFilterSettings.html'
   import PushNotificationSettings from '../../../_components/settings/instance/PushNotificationSettings.html'
-  import ThemeSettings from '../../../_components/settings/instance/ThemeSettings.html'
   import InstanceActions from '../../../_components/settings/instance/InstanceActions.html'
   import WordFilterSettings from '../../../_components/settings/instance/WordFilterSettings.html'
   import { updateVerifyCredentialsForInstance } from '../../../_actions/instances.js'
@@ -54,7 +51,6 @@
       SettingsLayout,
       InstanceUserProfile,
       PushNotificationSettings,
-      ThemeSettings,
       InstanceActions,
       HomeTimelineFilterSettings,
       NotificationFilterSettings,

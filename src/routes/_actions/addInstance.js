@@ -1,7 +1,6 @@
 import { getAccessTokenFromAuthCode, registerApplication, generateAuthLink } from '../_api/oauth.js'
 import { getInstanceInfo } from '../_api/instance.js'
 import { goto } from '../../../__sapper__/client.js'
-import { DEFAULT_THEME, switchToTheme } from '../_utils/themeEngine.js'
 import { store } from '../_store/store.js'
 import { updateVerifyCredentialsForInstance } from './instances.js'
 import { updateCustomEmojiForInstance } from './emoji.js'
@@ -95,8 +94,7 @@ async function registerNewInstance (code) {
     code,
     redirectUri
   )
-  const { loggedInInstances, loggedInInstancesInOrder, instanceThemes } = store.get()
-  instanceThemes[currentRegisteredInstanceName] = DEFAULT_THEME
+  const { loggedInInstances, loggedInInstancesInOrder } = store.get()
   loggedInInstances[currentRegisteredInstanceName] = instanceData
   if (!loggedInInstancesInOrder.includes(currentRegisteredInstanceName)) {
     loggedInInstancesInOrder.push(currentRegisteredInstanceName)
@@ -108,11 +106,8 @@ async function registerNewInstance (code) {
     loggedInInstances,
     currentInstance: currentRegisteredInstanceName,
     loggedInInstancesInOrder,
-    instanceThemes
   })
   store.save()
-  const { enableGrayscale } = store.get()
-  switchToTheme(DEFAULT_THEME, enableGrayscale)
   // fire off these requests so they're cached
   /* no await */ updateVerifyCredentialsForInstance(currentRegisteredInstanceName)
   /* no await */ updateCustomEmojiForInstance(currentRegisteredInstanceName)

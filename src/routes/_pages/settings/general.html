@@ -107,16 +107,10 @@
       {intl.shortAria}
     </label>
   </form>
-
-  {#if $isUserLoggedIn }
-    <h2>{themeTitle}</h2>
-    <ThemeSettings instanceName={$currentInstance} />
-  {/if}
 </SettingsLayout>
 <UISettingsStyles />
 <script>
   import SettingsLayout from '../../_components/settings/SettingsLayout.html'
-  import ThemeSettings from '../../_components/settings/instance/ThemeSettings.html'
   import { store } from '../../_store/store.js'
   import Tooltip from '../../_components/Tooltip.html'
   import UISettingsStyles from '../../_components/settings/UISettingsStyles.html'
@@ -125,7 +119,6 @@
   export default {
     components: {
       SettingsLayout,
-      ThemeSettings,
       Tooltip,
       UISettingsStyles
     },
@@ -145,12 +138,6 @@
       }
     },
     store: () => store,
-    computed: {
-      themeTitle: ({ $loggedInInstancesInOrder, $currentInstance }) => (
-        $loggedInInstancesInOrder.length > 1
-          ? formatIntl('intl.themeForInstance', { instance: $currentInstance })
-          : 'intl.theme'
-      )
-    }
+    computed: {},
   }
 </script>

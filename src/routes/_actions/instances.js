@@ -1,6 +1,5 @@
 import { getVerifyCredentials } from '../_api/user.js'
 import { store } from '../_store/store.js'
-import { switchToTheme } from '../_utils/themeEngine.js'
 import { toast } from '../_components/toast/toast.js'
 import { goto } from '../../../__sapper__/client.js'
 import { cacheFirstUpdateAfter } from '../_utils/sync.js'
@@ -9,28 +8,13 @@ import { database } from '../_database/database.js'
 import { importVirtualListStore } from '../_utils/asyncModules/importVirtualListStore.js'
 import { formatIntl } from '../_utils/formatIntl.js'
 
-export function changeTheme (instanceName, newTheme) {
-  const { instanceThemes } = store.get()
-  instanceThemes[instanceName] = newTheme
-  store.set({ instanceThemes })
-  store.save()
-  const { currentInstance } = store.get()
-  if (instanceName === currentInstance) {
-    const { enableGrayscale } = store.get()
-    switchToTheme(newTheme, enableGrayscale)
-  }
-}
-
 export function switchToInstance (instanceName) {
-  const { instanceThemes } = store.get()
   store.set({
     currentInstance: instanceName,
     searchResults: null,
     queryInSearch: ''
   })
   store.save()
-  const { enableGrayscale } = store.get()
-  switchToTheme(instanceThemes[instanceName], enableGrayscale)
 }
 
 export async function logOutOfInstance (instanceName, message) {
@@ -41,7 +25,6 @@ export async function logOutOfInstance (instanceName, message) {
     customEmoji,
     instanceInfos,
     instanceLists,
-    instanceThemes,
     loggedInInstances,
     loggedInInstancesInOrder,
     verifyCredentials
@@ -53,7 +36,6 @@ export async function logOutOfInstance (instanceName, message) {
     customEmoji,
     instanceInfos,
     instanceLists,
-    instanceThemes,
     loggedInInstances,
     verifyCredentials
   ]
@@ -66,7 +48,6 @@ export async function logOutOfInstance (instanceName, message) {
     customEmoji,
     instanceInfos,
     instanceLists,
-    instanceThemes,
     loggedInInstances,
     loggedInInstancesInOrder,
     queryInSearch: '',
@@ -81,8 +62,6 @@ export async function logOutOfInstance (instanceName, message) {
   const { virtualListStore } = await importVirtualListStore()
   virtualListStore.clearRealmByPrefix(currentInstance + '/') // TODO: this is a hacky way to clear the vlist cache
   toast.say(message)
-  const { enableGrayscale } = store.get()
-  switchToTheme(instanceThemes[newInstance], enableGrayscale)
   /* no await */ database.clearDatabaseForInstance(instanceName)
   goto('/settings/instances')
 }
