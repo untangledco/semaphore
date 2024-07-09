@@ -7,7 +7,6 @@ import { cleanup } from './cleanup.js'
 import { wordFilterObservers } from './wordFilterObservers.js'
 import { showComposeDialogObservers } from './showComposeDialogObservers.js'
 import { badgeObservers } from './badgeObservers.js'
-import { countryFlagEmojiPolyfill } from './countryFlagEmojiPolyfill.js'
 import { centerNavObservers } from './centerNavObservers.js'
 
 // These observers can be lazy-loaded when the user is actually logged in.
@@ -23,5 +22,4 @@ export function loggedInObservers () {
   showComposeDialogObservers()
   badgeObservers()
   cleanup()
-  countryFlagEmojiPolyfill()
 }

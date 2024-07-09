@@ -13,13 +13,7 @@
         <li class="media-scroll-item">
           <div class="media-scroll-item-inner">
             <div class="media-scroll-item-image-area">
-                {#if canPinchZoom && pinchZoomMode}
-                  <PinchZoomable className='media-pinch-zoom' >
-                    <MediaInDialog {media} />
-                  </PinchZoomable>
-                {:else}
-                  <MediaInDialog {media} />
-                {/if}
+              <MediaInDialog {media} />
             </div>
           </div>
         </li>
@@ -234,7 +228,6 @@
   import MediaInDialog from './MediaInDialog.html'
   import IconButton from '../../IconButton.html'
   import Shortcut from '../../shortcut/Shortcut.html'
-  import PinchZoomable from './PinchZoomable.html'
   import { show } from '../helpers/showDialog.js'
   import { oncreate as onCreateDialog } from '../helpers/onCreateDialog.js'
   import { close } from '../helpers/closeDialog.js'
@@ -278,7 +271,6 @@
       MediaInDialog,
       IconButton,
       Shortcut,
-      PinchZoomable
     },
     helpers: {
       createLabel (i, current) {

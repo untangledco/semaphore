@@ -8,10 +8,6 @@ const resolve = {
   extensions: ['.js', '.json', '.html'],
   mainFields: ['svelte', 'module', 'browser', 'main'],
   alias: {
-    // All browsers we target support Intl.PluralRules (or it's polyfilled).
-    // So format-message-interpret can fall back to that. This file is pretty big (9.83kB) and it's not needed.
-    './plurals': '@stdlib/utils-noop',
-    'lookup-closest-locale': '@stdlib/utils-noop', // small, but also not needed
     'svelte/store.umd.js': 'svelte/store.js' // have to use UMD for Mocha, but in Webpack we can use the ESM version
   }
 }

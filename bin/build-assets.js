@@ -26,23 +26,8 @@ async function getEmojiI18nFile (locale, shortcode) {
   } catch (err) { /* ignore */ }
 }
 
-async function getFirstExistingEmojiI18nFile () {
-  for (const locale of PREFERRED_LOCALES) {
-    for (const shortcode of PREFERRED_SHORTCODES) {
-      const json = await getEmojiI18nFile(locale, shortcode)
-      if (json) {
-        return json
-      }
-    }
-  }
-}
-
 async function buildEmojiI18nFile () {
   const json = await getFirstExistingEmojiI18nFile()
-
-  if (!json) {
-    throw new Error(`Couldn't find i18n data for locale ${LOCALE}. Is it supported in emoji-picker-element-data?`)
-  }
 
   await writeFile(
     path.resolve(__dirname, `../static/emoji-${LOCALE}.json`),
@@ -64,20 +49,9 @@ async function buildManifestJson () {
   )
 }
 
-async function buildFlagEmojiFile () {
-  await copyFile(path.resolve(
-    __dirname,
-    '../node_modules/country-flag-emoji-polyfill/dist/TwemojiCountryFlags.woff2'
-  ), path.resolve(
-    __dirname, '../static/TwemojiCountryFlags.woff2'
-  ))
-}
-
 async function main () {
   await Promise.all([
-    buildEmojiI18nFile(),
     buildManifestJson(),
-    buildFlagEmojiFile()
   ])
 }
 

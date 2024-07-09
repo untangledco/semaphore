@@ -1,7 +1,6 @@
 {#if realm === 'home'}
   <h2 class="sr-only">{intl.composeStatus}</h2>
 {/if}
-<ComposeFileDrop {realm} >
   <div class="{computedClassName} {hideAndFadeIn}">
     <ComposeAuthor {realm} {dialogId} />
     {#if contentWarningShown}
@@ -22,7 +21,6 @@
     <ComposeMedia {realm} {media} />
     <ComposeMediaSensitive {realm} {media} {sensitive} {contentWarning} {contentWarningShown} />
   </div>
-</ComposeFileDrop>
 <ComposeStickyButton {showSticky}
                      {overLimit}
                      {hideAndFadeIn}
@@ -98,7 +96,6 @@
   import ComposeStickyButton from './ComposeStickyButton.html'
   import ComposeMedia from './ComposeMedia.html'
   import ComposeContentWarning from './ComposeContentWarning.html'
-  import ComposeFileDrop from './ComposeFileDrop.html'
   import ComposeAutosuggest from './ComposeAutosuggest.html'
   import ComposePoll from './ComposePoll.html'
   import ComposeMediaSensitive from './ComposeMediaSensitive.html'
@@ -137,7 +134,6 @@
       ComposeStickyButton,
       ComposeMedia,
       ComposeContentWarning,
-      ComposeFileDrop,
       ComposeAutosuggest,
       ComposePoll,
       ComposeMediaSensitive
