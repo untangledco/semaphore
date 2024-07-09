@@ -370,7 +370,6 @@ export default {
   shortAria: 'Utiliser des etiquettes courtes ARIA',
   theme: 'Thème',
   themeForInstance: 'Theème pour {instance}',
-  disableCustomScrollbars: 'Désactiver les scrollbars customisés',
   preferences: 'Préférences',
   hotkeySettings: 'Paramètres de raccourcis clavier',
   disableHotkeys: 'Désactiver les raccourcis clavier',

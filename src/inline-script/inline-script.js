@@ -31,11 +31,6 @@ if (!currentInstance) {
   onUserIsLoggedOut()
 }
 
-if (disableCustomScrollbars) {
-  document.getElementById('theScrollbarStyle')
-    .setAttribute('media', 'only x') // disables the style
-}
-
 if (bottomNav) {
   document.getElementById('theBottomNavStyle')
     .setAttribute('media', 'all') // enables the style

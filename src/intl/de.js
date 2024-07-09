@@ -366,7 +366,6 @@ export default {
   shortAria: 'Verkürzte aria-label für Artikel verwenden',
   theme: 'Design',
   themeForInstance: 'Design für {instance}',
-  disableCustomScrollbars: 'Angepasste Rollbalken deaktivieren',
   preferences: 'Vorlieben',
   hotkeySettings: 'Einstellungen für Tastenkürzel',
   disableHotkeys: 'Alle Tastenkürzel deaktivieren',

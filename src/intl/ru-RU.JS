@@ -379,7 +379,6 @@ export default {
   shortAria: 'Использовать метки ARIA для коротких статей',
   theme: 'Тема',
   themeForInstance: 'Тема для {instance}',
-  disableCustomScrollbars: 'Отключить пользовательские полосы прокрутки',
   bottomNav: 'Поместите панель навигации в нижнюю часть экрана',
   centerNav: 'Центрировать панель навигации',
   preferences: 'Предпочтения',

@@ -330,7 +330,7 @@ export default {
   aboutAppDescription: `
   <p>
     Semaphore is
-    <a rel="noopener" target="_blank" href="https://github.com/NickColley/semaphore">free and open-source software</a> 
+    <a rel="noopener" target="_blank" href="https://github.com/NickColley/semaphore">free and open-source software</a>
     maintained by <a rel="noopener" target="_blank" href="https://nickcolley.co.uk">Nick Colley</a>
     and distributed under the
     <a rel="noopener" target="_blank"
@@ -381,7 +381,6 @@ export default {
   shortAria: 'Use short article ARIA labels',
   theme: 'Theme',
   themeForInstance: 'Theme for {instance}',
-  disableCustomScrollbars: 'Disable custom scrollbars',
   bottomNav: 'Place the navigation bar at the bottom of the screen',
   centerNav: 'Center the navigation bar',
   preferences: 'Preferences',

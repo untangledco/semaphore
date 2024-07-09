@@ -12,8 +12,6 @@ const persistedState = {
   currentInstance: null,
   currentRegisteredInstanceName: undefined,
   currentRegisteredInstance: undefined,
-  // we disable scrollbars by default on iOS
-  disableCustomScrollbars: process.browser && /iP(?:hone|ad|od)/.test(navigator.userAgent),
   bottomNav: false,
   centerNav: false,
   disableFavCounts: false,

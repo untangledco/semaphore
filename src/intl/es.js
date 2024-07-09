@@ -384,7 +384,6 @@ export default {
   shortAria: 'Usar etiquetas ARIA cortas para artículos',
   theme: 'Diseño visual',
   themeForInstance: 'Diseño visual para {instance}',
-  disableCustomScrollbars: 'Deshabilitar barras deslizantes personalizadas',
   bottomNav: 'Situar la barra de navegación al final de la pantalla',
   centerNav: 'Centrar la barra de navegación',
   preferences: 'Preferencias',
