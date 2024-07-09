@@ -251,7 +251,6 @@
   import { classname } from '../../_utils/classname.js'
   import { getPoll, voteOnPoll } from '../../_actions/polls.js'
   import escapeHtml from 'escape-html'
-  import { emojifyText } from '../../_utils/emojifyText.js'
   import { formatIntl } from '../../_utils/formatIntl.js'
 
   const REFRESH_MIN_DELAY = 1000
@@ -294,7 +293,7 @@
       poll: ({ originalStatus, $polls, pollId }) => $polls[pollId] || originalStatus.poll,
       options: ({ poll, originalStatusEmojis, $autoplayGifs, votersOrVotesCount }) => (
         poll.options.map(({ title, votes_count: optionsVotesCount }) => ({
-          title: emojifyText(escapeHtml(title), originalStatusEmojis, $autoplayGifs),
+          title: escapeHtml(title),
           share: votersOrVotesCount ? Math.round(optionsVotesCount / votersOrVotesCount * 100) : 0
         }))
       ),

@@ -2,12 +2,6 @@
   <div class="compose-box-toolbar-items">
     <IconButton
       className="compose-toolbar-button"
-      label="{intl.addEmoji}"
-      href="#fa-smile"
-      on:click="onEmojiClick()"
-    />
-    <IconButton
-      className="compose-toolbar-button"
       svgClassName={$uploadingMedia ? 'spin' : ''}
       label="{intl.addMedia}"
       href={$uploadingMedia ? '#fa-spinner' : '#fa-camera'}
@@ -72,13 +66,11 @@
 <script>
   import IconButton from '../IconButton.html'
   import { store } from '../../_store/store.js'
-  import { importShowEmojiDialog } from '../dialog/asyncDialogs/importShowEmojiDialog.js'
   import { importShowPostPrivacyDialog } from '../dialog/asyncDialogs/importShowPostPrivacyDialog.js'
   import { doMediaUpload } from '../../_actions/media.js'
   import { toggleContentWarningShown } from '../../_actions/contentWarnings.js'
   import { mediaAccept } from '../../_static/media.js'
   import { enablePoll, disablePoll } from '../../_actions/composePoll.js'
-  import { updateCustomEmojiForInstance } from '../../_actions/emoji.js'
   import { formatIntl } from '../../_utils/formatIntl.js'
 
   export default {
@@ -95,15 +87,6 @@
     },
     store: () => store,
     methods: {
-      async onEmojiClick () {
-        const { realm } = this.get()
-        const { currentInstance } = this.store.get()
-        const [showEmojiDialog] = await Promise.all([
-          importShowEmojiDialog(),
-          updateCustomEmojiForInstance(currentInstance)
-        ])
-        showEmojiDialog(realm)
-      },
       onMediaClick () {
         this.refs.input.click()
       },

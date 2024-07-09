@@ -114,7 +114,6 @@
   import Avatar from '../Avatar.html'
   import ExternalLink from '../ExternalLink.html'
   import AccountDisplayName from './AccountDisplayName.html'
-  import { removeEmoji } from '../../_utils/removeEmoji.js'
   import { store } from '../../_store/store.js'
   import Label from '../Label.html'
   import { importShowMediaDialog } from '../dialog/asyncDialogs/importShowMediaDialog.js'
@@ -127,9 +126,7 @@
       emojis: ({ account }) => (account.emojis || []),
       displayName: ({ account }) => account.display_name || account.username,
       accessibleName: ({ displayName, emojis, $omitEmojiInDisplayNames }) => {
-        return $omitEmojiInDisplayNames
-          ? removeEmoji(displayName, emojis) || displayName
-          : displayName
+        return displayName
       },
       bot: ({ account }) => !!account.bot,
       label: ({ bot }) => bot ? 'bot' : '',

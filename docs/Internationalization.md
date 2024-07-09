@@ -4,9 +4,6 @@ To contribute or change translations for Semaphore, look in the [src/intl](https
 
 The default is `en-US.js`, and any strings not defined in a language file will fall back to the strings from that file.
 
-There is also an `intl/emoji-picker` directory, which contains translations for [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element)
-(which already comes with English built-in).
-
 Note that internationalization is currently experimental. Client-side locale switching is not supported – when you build
 the instance of Semaphore, it is either one language or another. To build in a particular language, use (for example):
 

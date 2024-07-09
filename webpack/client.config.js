@@ -9,14 +9,6 @@ import { mode, dev, resolve, inlineSvgs } from './shared.config.js'
 import { version } from '../package.json'
 
 import urlRegex from '../src/routes/_utils/urlRegexSource.js'
-// TODO: make it so we don't have to list these out explicitly
-import fr from 'emoji-picker-element/i18n/fr.js'
-import de from 'emoji-picker-element/i18n/de.js'
-import es from 'emoji-picker-element/i18n/es.js'
-
-const emojiPickerLocales = { fr, de, es }
-
-const emojiPickerI18n = LOCALE !== DEFAULT_LOCALE && emojiPickerLocales[LOCALE]
 
 const output = Object.assign(config.client.output(), {
   // enables HMR in workers
@@ -116,7 +108,6 @@ export default {
       'process.env.INLINE_SVGS': JSON.stringify(inlineSvgs),
       'process.env.URL_REGEX': urlRegex().toString(),
       'process.env.LOCALE': JSON.stringify(LOCALE),
-      'process.env.EMOJI_PICKER_I18N': emojiPickerI18n ? JSON.stringify(emojiPickerI18n) : 'undefined',
       'process.env.PINAFORE_VERSION': JSON.stringify(version),
       'process.env.IS_SERVICE_WORKER': 'false'
     }),

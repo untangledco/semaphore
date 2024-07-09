@@ -60,7 +60,6 @@
 
 </style>
 <script>
-  import { removeEmoji } from '../../_utils/removeEmoji.js'
   import Avatar from '../Avatar.html'
   import SvgIcon from '../SvgIcon.html'
   import { formatIntl } from '../../_utils/formatIntl.js'
@@ -70,17 +69,13 @@
       emojis: ({ account }) => (account.emojis || []),
       displayName: ({ account }) => account.display_name || account.username,
       accessibleName: ({ displayName, emojis, $omitEmojiInDisplayNames }) => {
-        return $omitEmojiInDisplayNames
-          ? removeEmoji(displayName, emojis) || displayName
-          : displayName
+        return displayName
       },
       moved: ({ account }) => account.moved,
       movedEmojis: ({ moved }) => (moved.emojis || []),
       movedDisplayName: ({ moved }) => moved.display_name || moved.username,
       movedAccessibleName: ({ movedDisplayName, movedEmojis, $omitEmojiInDisplayNames }) => {
-        return $omitEmojiInDisplayNames
-          ? removeEmoji(movedDisplayName, movedEmojis) || movedDisplayName
-          : movedDisplayName
+        return movedDisplayName
       },
       hasMovedLabel: ({ accessibleName }) => (
         formatIntl('intl.accountHasMoved', { account: accessibleName })

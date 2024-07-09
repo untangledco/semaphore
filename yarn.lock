@@ -2621,16 +2621,6 @@ emittery@^0.4.1:
   resolved "https://registry.npmjs.org/emittery/-/emittery-0.4.1.tgz"
   integrity sha512-r4eRSeStEGf6M5SKdrQhhLK5bOwOBxQhIE3YSTnZE3GpKiLfnnhE+tPtrJE79+eDJgm39BM6LSoI8SCx4HbwlQ==
 
-emoji-picker-element@^1.13.1:
-  version "1.13.1"
-  resolved "https://registry.npmjs.org/emoji-picker-element/-/emoji-picker-element-1.13.1.tgz"
-  integrity sha512-xOUYg6piwCmnYJw5Uh47rV5F2CwcFZcbfZx5jzU43gELJDbg8hrv6CBsikVe5VJSyiUH+N2QeQHc2f0h+V74PA==
-
-emoji-regex@^10.2.1:
-  version "10.2.1"
-  resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.2.1.tgz"
-  integrity sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA==
-
 emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"

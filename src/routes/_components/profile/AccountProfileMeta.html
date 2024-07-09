@@ -121,7 +121,6 @@
 </style>
 <script>
   import SvgIcon from '../SvgIcon.html'
-  import { emojifyText } from '../../_utils/emojifyText.js'
   import { store } from '../../_store/store.js'
 
   export default {
@@ -131,7 +130,7 @@
       fields: ({ account }) => account.fields || [],
       massagedFields: ({ fields, emojis, $autoplayGifs }) => (fields.map(field => ({
         name: field.name,
-        value: emojifyText(field.value, emojis, $autoplayGifs),
+        value: field.value,
         verified: !!field.verified_at
       })))
     },

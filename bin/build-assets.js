@@ -15,27 +15,6 @@ const PREFERRED_LOCALES = [LOCALE, LOCALE.split('-')[0]]
 // emojibase seems like the most "neutral" shortcodes, but cldr is available in every language
 const PREFERRED_SHORTCODES = ['emojibase', 'cldr']
 
-async function getEmojiI18nFile (locale, shortcode) {
-  const filename = path.resolve(__dirname,
-    '../node_modules/emoji-picker-element-data',
-    locale,
-    shortcode,
-    'data.json')
-  try {
-    return JSON.parse(await readFile(filename, 'utf8'))
-  } catch (err) { /* ignore */ }
-}
-
-async function buildEmojiI18nFile () {
-  const json = await getFirstExistingEmojiI18nFile()
-
-  await writeFile(
-    path.resolve(__dirname, `../static/emoji-${LOCALE}.json`),
-    JSON.stringify(json),
-    'utf8'
-  )
-}
-
 async function buildManifestJson () {
   const template = await readFile(path.resolve(__dirname, '../src/build/manifest.json'), 'utf8')
   // replace {@intl.foo}

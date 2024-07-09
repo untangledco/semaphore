@@ -5,10 +5,8 @@
   }
 </style>
 <script>
-  import { emojifyText } from '../../_utils/emojifyText.js'
   import { store } from '../../_store/store.js'
   import escapeHtml from 'escape-html'
-  import { removeEmoji } from '../../_utils/removeEmoji.js'
 
   export default {
     store: () => store,
@@ -16,16 +14,7 @@
       emojis: ({ account }) => (account.emojis || []),
       accountName: ({ account }) => (account.display_name || account.username),
       massagedAccountName: ({ accountName, emojis, $autoplayGifs, $omitEmojiInDisplayNames }) => {
-        accountName = escapeHtml(accountName)
-
-        if ($omitEmojiInDisplayNames) { // display name emoji are annoying to some screenreader users
-          const emojiFreeDisplayName = removeEmoji(accountName, emojis)
-          if (emojiFreeDisplayName) {
-            return emojiFreeDisplayName
-          }
-        }
-
-        return emojifyText(accountName, emojis, $autoplayGifs)
+        return escapeHtml(accountName)
       }
     }
   }

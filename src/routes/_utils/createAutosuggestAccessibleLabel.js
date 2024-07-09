@@ -1,5 +1,3 @@
-import { removeEmoji } from './removeEmoji.js'
-
 export function createAutosuggestAccessibleLabel (
   autosuggestType, $omitEmojiInDisplayNames,
   selectedIndex, searchResults) {
@@ -12,10 +10,8 @@ export function createAutosuggestAccessibleLabel (
   } else { // account
     let displayName = selected.display_name || selected.username
     const emojis = selected.emojis || []
-    displayName = $omitEmojiInDisplayNames
-      ? removeEmoji(displayName, emojis) || displayName
-      : displayName
     label = `${displayName} @${selected.acct}`
   }
   return label
 }
+
