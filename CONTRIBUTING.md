@@ -25,14 +25,6 @@ To build a Docker image for production:
 
 Now Semaphore is running at `localhost:4002`.
 
-### docker-compose
-
-Alternatively, use docker-compose to build and serve the image for production:
-
-    docker-compose up --build -d
-
-The image will build and start, then detach from the terminal running at `localhost:4002`.
-
 ### Updating
 
 To keep your version of Semaphore up to date, you can use `git` to check out the latest tag:
