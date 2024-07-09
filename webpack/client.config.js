@@ -2,7 +2,6 @@ import { DEFAULT_LOCALE, LOCALE } from '../src/routes/_static/intl.js'
 import path from 'path'
 import webpack from 'webpack'
 import config from 'sapper/config/webpack.js'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import terser from './terser.config.js'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { mode, dev, resolve, inlineSvgs } from './shared.config.js'
@@ -15,13 +14,6 @@ const output = Object.assign(config.client.output(), {
   globalObject: 'this',
   filename: dev ? '[fullhash]/[id].js' : '[id].[contenthash].[name].js',
   chunkFilename: dev ? '[fullhash]/[id].js' : '[id].[contenthash].[name].js'
-})
-
-process.on('unhandledRejection', err => {
-  // TODO: seems to be a Webpack Bundle Analyzer error we can safely ignore
-  if (!err.message.includes('Error: No such label \'done hook\' for WebpackLogger.timeEnd()')) {
-    console.error(err)
-  }
 })
 
 export default {
@@ -118,12 +110,6 @@ export default {
     }),
     dev && new webpack.HotModuleReplacementPlugin({
       requestTimeout: 120000
-    }),
-    // generates report.html, somewhat expensive to compute, so avoid in CI tests
-    !dev && !process.env.CI && new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-      logLevel: 'silent'
     })
   ].filter(Boolean),
   devtool: dev ? 'inline-source-map' : 'source-map',
