@@ -9,7 +9,6 @@
 /static/emoji-*.json
 /static/TwemojiCountryFlags.woff2
 /src/inline-script/checksum.js
-yarn-error.log
 
 .now
 /webpack/*.cjs
