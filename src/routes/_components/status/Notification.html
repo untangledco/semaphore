@@ -1,6 +1,6 @@
 {#if status}
   <Status {index} {length} {timelineType} {timelineValue} {focusSelector}
-          {status} {notification} {enableShortcuts} on:recalculateHeight
+          {status} {notification} on:recalculateHeight
   />
 {:else}
   <article id={elementId}
@@ -12,10 +12,6 @@
   >
     <StatusHeader {notification} {notificationId} {status} {statusId} {timelineType}
                   {account} {accountId} {uuid} isStatusInNotification="true" />
-    {#if enableShortcuts}
-      <Shortcut scope={shortcutScope} key="p" on:pressed="openAuthorProfile()" />
-      <Shortcut scope={shortcutScope} key="m" on:pressed="mentionAuthor()" />
-    {/if}
   </article>
 {/if}
 <style>
@@ -35,7 +31,6 @@
 <script>
   import Status from './Status.html'
   import StatusHeader from './StatusHeader.html'
-  import Shortcut from '../shortcut/Shortcut.html'
   import { store } from '../../_store/store.js'
   import { getAccountAccessibleName } from '../../_a11y/getAccountAccessibleName.js'
   import { goto } from '../../../../__sapper__/client.js'
@@ -48,11 +43,7 @@
     components: {
       Status,
       StatusHeader,
-      Shortcut
     },
-    data: () => ({
-      enableShortcuts: null
-    }),
     store: () => store,
     computed: {
       account: ({ notification }) => notification.account,

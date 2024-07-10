@@ -22,16 +22,12 @@
     {/if}
   </div>
 </FocusRestoration>
-<Shortcut scope="global" key="." on:pressed="showMoreAndScrollToTop()" />
-<ScrollListShortcuts />
 <script>
   import { store } from '../../_store/store.js'
   import DynamicHeading from '../DynamicHeading.html'
   import Status from '../status/Status.html'
   import LoadingFooter from './LoadingFooter.html'
   import MoreHeaderVirtualWrapper from './MoreHeaderVirtualWrapper.html'
-  import ScrollListShortcuts from '../shortcut/ScrollListShortcuts.html'
-  import Shortcut from '../shortcut/Shortcut.html'
   import { importVirtualList } from '../../_utils/asyncModules/importVirtualList.js'
   import { importList } from '../../_utils/asyncModules/importList.js'
   import { importStatusVirtualListItem } from '../../_utils/asyncModules/importStatusVirtualListItem.js'
@@ -231,8 +227,6 @@
       showMoreAndScrollToTop
     },
     components: {
-      ScrollListShortcuts,
-      Shortcut,
       FocusRestoration,
       DynamicHeading
     }

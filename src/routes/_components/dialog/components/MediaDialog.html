@@ -87,10 +87,6 @@
   </div>
 </ModalDialog>
 
-{#if !$leftRightChangesFocus }
-  <Shortcut scope='modal-{id}' key="ArrowLeft" on:pressed="prev()" />
-  <Shortcut scope='modal-{id}' key="ArrowRight" on:pressed="next()" />
-{/if}
 <style>
   :global(.media-modal-dialog) {
     max-width: 100%;
@@ -227,7 +223,6 @@
   import ModalDialog from './ModalDialog.html'
   import MediaInDialog from './MediaInDialog.html'
   import IconButton from '../../IconButton.html'
-  import Shortcut from '../../shortcut/Shortcut.html'
   import { show } from '../helpers/showDialog.js'
   import { oncreate as onCreateDialog } from '../helpers/onCreateDialog.js'
   import { close } from '../helpers/closeDialog.js'
@@ -269,7 +264,6 @@
       ModalDialog,
       MediaInDialog,
       IconButton,
-      Shortcut,
     },
     helpers: {
       createLabel (i, current) {

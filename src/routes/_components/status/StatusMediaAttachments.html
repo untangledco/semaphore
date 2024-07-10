@@ -34,14 +34,8 @@
     <MediaAttachments {mediaAttachments} {sensitive} {sensitiveShown} {uuid} />
   </div>
 </div>
-{#if enableShortcuts}
-  <Shortcut scope={shortcutScope} key="y" on:pressed="toggleSensitiveMedia(false)"/>
-{/if}
 {:else}
   <MediaAttachments {mediaAttachments} {sensitive} {sensitiveShown} {uuid} />
-{/if}
-{#if enableShortcuts}
-  <Shortcut scope={shortcutScope} key="i" on:pressed="showFirstMedia()" />
 {/if}
 <style>
   .status-sensitive-media-container {
@@ -163,7 +157,6 @@
 </style>
 <script>
   import MediaAttachments from './MediaAttachments.html'
-  import Shortcut from '../shortcut/Shortcut.html'
   import SvgIcon from '../SvgIcon.html'
   import { store } from '../../_store/store.js'
   import { registerClickDelegate } from '../../_utils/delegate.js'
@@ -177,7 +170,6 @@
     },
     components: {
       MediaAttachments,
-      Shortcut,
       SvgIcon
     },
     store: () => store,

@@ -46,11 +46,6 @@
     <StatusComposeBox {...params} on:recalculateHeight />
   {/if}
 </article>
-{#if enableShortcuts}
-  <Shortcut scope={shortcutScope} key="o" on:pressed="open()" />
-  <Shortcut scope={shortcutScope} key="p" on:pressed="openAuthorProfile()" />
-  <Shortcut scope={shortcutScope} key="m" on:pressed="mentionAuthor()" />
-{/if}
 
 <style>
   .status-article {
@@ -119,7 +114,6 @@
   import StatusComposeBox from './StatusComposeBox.html'
   import StatusMentions from './StatusMentions.html'
   import StatusPoll from './StatusPoll.html'
-  import Shortcut from '../shortcut/Shortcut.html'
   import { store } from '../../_store/store.js'
   import { goto } from '../../../../__sapper__/client.js'
   import { registerClickDelegate } from '../../_utils/delegate.js'
@@ -174,13 +168,11 @@
       StatusSpoiler,
       StatusComposeBox,
       StatusMentions,
-      Shortcut
     },
     data: () => ({
       notification: undefined,
       replyVisibility: undefined,
       preloadHiddenContent: false,
-      enableShortcuts: null
     }),
     store: () => store,
     methods: {
@@ -343,7 +335,7 @@
         account, accountId, uuid, isStatusInNotification, isStatusInOwnThread,
         originalAccount, originalAccountId, visibility,
         replyVisibility, spoilerText, originalStatus, originalStatusId, inReplyToId,
-        enableShortcuts, shortcutScope, originalStatusEmojis
+        shortcutScope, originalStatusEmojis
       }) => ({
         notification,
         notificationId,
@@ -363,7 +355,6 @@
         originalStatus,
         originalStatusId,
         inReplyToId,
-        enableShortcuts,
         shortcutScope,
         originalStatusEmojis
       })

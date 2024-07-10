@@ -6,9 +6,6 @@
     {spoilerShown ? 'intl.showLess' : 'intl.showMore'}
   </button>
 </div>
-{#if enableShortcuts}
-<Shortcut scope={shortcutScope} key="x" on:pressed="toggleSpoilers()"/>
-{/if}
 <style>
   .status-spoiler {
     grid-area: spoiler;
@@ -47,7 +44,6 @@
 
 </style>
 <script>
-  import Shortcut from '../shortcut/Shortcut.html'
   import { store } from '../../_store/store.js'
   import { registerClickDelegate } from '../../_utils/delegate.js'
   import { on } from '../../_utils/eventBus.js'
@@ -61,9 +57,6 @@
       on('toggleAllSpoilers', this, this.toggleSpoilers)
     },
     store: () => store,
-    components: {
-      Shortcut
-    },
     computed: {
       massagedSpoilerText: ({ spoilerText, originalStatusEmojis, $autoplayGifs }) => {
         return spoilerText

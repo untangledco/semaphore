@@ -13,9 +13,6 @@
     {/each}
 	</ul>
 </nav>
-{#if navShortcuts}
-  <svelte:component this={navShortcuts}/>
-{/if}
 
 <style>
 	.main-nav {
@@ -51,20 +48,12 @@
 </style>
 <script>
   import NavItem from './NavItem.html'
-  import { importNavShortcuts } from '../_utils/asyncModules/importNavShortcuts.js'
   import { store } from '../_store/store.js'
 
   export default {
-    async oncreate () {
-      const navShortcuts = await importNavShortcuts()
-      this.set({ navShortcuts })
-    },
     store: () => store,
     components: {
       NavItem
     },
-    data: () => ({
-      navShortcuts: undefined
-    })
   }
 </script>

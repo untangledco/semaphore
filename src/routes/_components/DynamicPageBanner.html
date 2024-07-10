@@ -13,7 +13,6 @@
     {intl.back}
   </button>
 </div>
-<Shortcut key="Backspace" on:pressed="onGoBack()"/>
 <style>
   .dynamic-page-banner {
     display: grid;
@@ -70,7 +69,6 @@
   }
 </style>
 <script>
-  import Shortcut from './shortcut/Shortcut.html'
   import SvgIcon from './SvgIcon.html'
 
   export default {
@@ -79,7 +77,6 @@
       ariaTitle: ''
     }),
     components: {
-      Shortcut,
       SvgIcon
     },
     methods: {

@@ -14,9 +14,6 @@
     </span>
   </div>
   {/if}
-  {#if enableShortcuts}
-  <Shortcut scope={shortcutScope} key="l" on:pressed="open(url)" />
-  {/if}
 </a>
 <style>
   .status-card {
@@ -86,12 +83,10 @@
 </style>
 <script>
   import LazyImage from '../LazyImage.html'
-  import Shortcut from '../shortcut/Shortcut.html'
   import { unescape } from '../../_thirdparty/unescape/unescape.js'
 
   export default {
     components: {
-      Shortcut,
       LazyImage
     },
     computed: {
