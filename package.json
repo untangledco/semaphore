@@ -16,10 +16,6 @@
     "export": " NODE_ENV=production run-s export-steps"
   },
   "dependencies": {
-    "@formatjs/intl-listformat": "^7.1.3",
-    "@formatjs/intl-locale": "^3.0.7",
-    "@formatjs/intl-pluralrules": "^5.1.4",
-    "@formatjs/intl-relativetimeformat": "^11.1.4",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@stdlib/utils-noop": "^0.2.1",
@@ -29,7 +25,6 @@
     "circular-dependency-plugin": "^5.2.2",
     "events-light": "^1.0.5",
     "express": "^4.18.2",
-    "focus-visible": "^5.2.0",
     "format-message-interpret": "^6.2.4",
     "format-message-parse": "^6.2.4",
     "li": "^1.3.0",
@@ -37,7 +32,6 @@
     "npm-run-all": "^4.1.5",
     "page-lifecycle": "^0.1.2",
     "promise-worker": "^2.0.1",
-    "requestidlecallback": "^0.3.0",
     "rollup": "^2.67.3",
     "rtl-detect": "^1.0.4",
     "sapper": "nolanlawson/sapper#for-pinafore-26",
