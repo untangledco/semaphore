@@ -1,39 +1,10 @@
 import { get } from '../_utils/lodash-lite.js'
-import { decode as decodeBlurhash, init as initBlurhash } from '../_utils/blurhash.js'
 import { scheduleIdleTask } from '../_utils/scheduleIdleTask.js'
 import { statusHtmlToPlainText } from '../_utils/statusHtmlToPlainText.js'
 
 function getActualStatus (statusOrNotification) {
   return get(statusOrNotification, ['status']) ||
     get(statusOrNotification, ['notification', 'status'])
-}
-
-export function prepareToRehydrate () {
-  // start the blurhash worker a bit early to save time
-  try {
-    initBlurhash()
-  } catch (err) {
-    console.error('could not start blurhash worker', err)
-  }
-}
-
-async function decodeAllBlurhashes (statusOrNotification) {
-  const status = getActualStatus(statusOrNotification)
-  if (!status) {
-    return
-  }
-  const mediaWithBlurhashes = get(status, ['media_attachments'], [])
-    .concat(get(status, ['reblog', 'media_attachments'], []))
-    .filter(_ => _.blurhash)
-  if (mediaWithBlurhashes.length) {
-    await Promise.all(mediaWithBlurhashes.map(async media => {
-      try {
-        media.decodedBlurhash = await decodeBlurhash(media.blurhash)
-      } catch (err) {
-        console.warn('Could not decode blurhash, ignoring', err)
-      }
-    }))
-  }
 }
 
 async function calculatePlainTextContent (statusOrNotification) {
@@ -58,7 +29,6 @@ async function calculatePlainTextContent (statusOrNotification) {
 // like calculating the blurhash or calculating the plain text content
 export async function rehydrateStatusOrNotification (statusOrNotification) {
   await Promise.all([
-    decodeAllBlurhashes(statusOrNotification),
     calculatePlainTextContent(statusOrNotification)
   ])
 }

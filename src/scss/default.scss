@@ -142,8 +142,6 @@ $compose-background: lighten($main-theme-color, 32%);
   --focal-bg-hover: #{lighten(rgba($toast-bg, 0.8), 5%)};
   --focal-color: #{$secondary-text-color};
 
-  --blurhash-sensitive-text-color: #{lighten($deemphasized-color, 40%)};
-
   --focus-bg: #{rgba(0, 0, 0, 0.1)};
 
   --verified-text-color: #00703C;

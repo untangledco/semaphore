@@ -33,7 +33,6 @@ const persistedState = {
   markMediaAsSensitive: false,
   showAllSpoilers: false,
   neverMarkMediaAsSensitive: false,
-  ignoreBlurhash: false,
   omitEmojiInDisplayNames: undefined,
   pinnedPages: {},
   pushSubscriptions: {},

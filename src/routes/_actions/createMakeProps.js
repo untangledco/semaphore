@@ -1,5 +1,5 @@
 import { database } from '../_database/database.js'
-import { prepareToRehydrate, rehydrateStatusOrNotification } from './rehydrateStatusOrNotification.js'
+import { rehydrateStatusOrNotification } from './rehydrateStatusOrNotification.js'
 
 async function getNotification (instanceName, timelineType, timelineValue, itemId) {
   return {
@@ -19,8 +19,6 @@ async function getStatus (instanceName, timelineType, timelineValue, itemId) {
 
 export function createMakeProps (instanceName, timelineType, timelineValue) {
   let promiseChain = Promise.resolve()
-
-  prepareToRehydrate() // start blurhash early to save time
 
   async function fetchFromIndexedDB (itemId) {
     try {
