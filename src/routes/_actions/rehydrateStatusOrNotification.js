@@ -15,14 +15,7 @@ async function calculatePlainTextContent (statusOrNotification) {
   const originalStatus = status.reblog ? status.reblog : status
   const content = originalStatus.content || ''
   const mentions = originalStatus.mentions || []
-  // Calculating the plaintext from the HTML is a non-trivial operation, so we might
-  // as well do it in advance, while blurhash is being decoded on the worker thread.
-  await new Promise(resolve => {
-    scheduleIdleTask(() => {
-      originalStatus.plainTextContent = statusHtmlToPlainText(content, mentions)
-      resolve()
-    })
-  })
+  originalStatus.plainTextContent = statusHtmlToPlainText(content, mentions)
 }
 
 // Do stuff that we need to do when the status or notification is fetched from the database,
