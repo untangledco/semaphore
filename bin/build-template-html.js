@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { buildSass } from './build-sass.js'
 import { buildSvg } from './build-svg.js'
 import applyIntl from '../webpack/svelte-intl-loader.js'
 import { LOCALE } from '../src/routes/_static/intl.js'
@@ -8,11 +7,6 @@ import { LOCALE } from '../src/routes/_static/intl.js'
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 const builders = [
-  {
-    watch: 'src/scss',
-    comment: '<!-- inline CSS -->',
-    rebuild: buildSass
-  },
   {
     watch: 'bin/svgs.js',
     comment: '<!-- inline SVG -->',

@@ -19,9 +19,7 @@ For this reason, Semaphore has been stuck on Svelte v2 and Sapper for a long tim
 ## Prebuild process
 
 The `template.html` is itself templated. The "template template" has some inline scripts, CSS, and SVGs
-injected into it during the build process. SCSS is used for global CSS and themed CSS, but inside of the
-components themselves, it's just vanilla CSS because I couldn't figure out how to get Svelte to run a SCSS
-preprocessor.
+injected into it during the build process.
 
 ## Lots of small files
 

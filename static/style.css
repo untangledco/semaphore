@@ -1,0 +1,445 @@
+@charset "UTF-8";
+:root {
+  --button-primary-bg: #6248CA;
+  --button-primary-text: white;
+  --button-primary-border: #4b32ad;
+  --button-primary-bg-active: #816cd4;
+  --button-primary-bg-hover: #735cd0;
+  --button-bg: #e6e6e6;
+  --button-text: #333;
+  --button-border: #a7a7a7;
+  --button-bg-active: #bfbfbf;
+  --button-bg-hover: #f2f2f2;
+  --input-border: #dadada;
+  --input-border-radius-size: 4px;
+  --input-bg: white;
+  --input-placeholder-color: #666;
+  --anchor-text: #6248CA;
+  --main-bg: white;
+  --body-bg: #e3def6;
+  --body-text-color: #333;
+  --main-border: #dadada;
+  --svg-fill: #6248CA;
+  --form-bg: #f7f7f7;
+  --form-border: #c1c1c1;
+  --nav-bg: #6248CA;
+  --nav-active-bg: #6c54cd;
+  --nav-border: #4b32ad;
+  --nav-a-selected-bg: #6c54cd;
+  --nav-a-selected-active-bg: var(--nav-a-selected-bg-hover);
+  --nav-svg-fill: white;
+  --nav-text-color: white;
+  --nav-indicator-bg: #6248CA;
+  --nav-indicator-bg-active: #efedfa;
+  --nav-indicator-bg-hover: #c0b6ea;
+  --nav-a-selected-border-hover: white;
+  --nav-a-selected-bg-hover: #715acf;
+  --nav-a-bg-hover: #674ecc;
+  --nav-svg-fill-hover: white;
+  --nav-text-color-hover: white;
+  --action-button-fill-color: #8975d7;
+  --action-button-fill-color-hover: #7660d1;
+  --action-button-fill-color-active: #6248CA;
+  --action-button-fill-color-pressed: #4e31c3;
+  --action-button-fill-color-pressed-hover: #442aaa;
+  --action-button-fill-color-pressed-active: #3f279e;
+  --action-button-deemphasized-fill-color: #666;
+  --action-button-deemphasized-fill-color-hover: #9e9e9e;
+  --action-button-deemphasized-fill-color-active: #737373;
+  --action-button-deemphasized-fill-color-pressed: #545454;
+  --action-button-deemphasized-fill-color-pressed-hover: #616161;
+  --action-button-deemphasized-fill-color-pressed-active: #404040;
+  --settings-list-item-bg: white;
+  --settings-list-item-text: #6248CA;
+  --settings-list-item-text-hover: #6248CA;
+  --settings-list-item-border: #dadada;
+  --settings-list-item-bg-active: #e6e6e6;
+  --settings-list-item-bg-hover: #fafafa;
+  --toast-bg: #333;
+  --toast-border: #fafafa;
+  --toast-text: white;
+  --toast-button-hover: #404040;
+  --toast-button-active: #4d4d4d;
+  --toast-anchor-color: #a697e1;
+  --mask-bg: #333;
+  --mask-svg-fill: white;
+  --mask-opaque-bg: rgba(51, 51, 51, 0.8);
+  --loading-bg: #ededed;
+  --account-profile-bg-backdrop-filter: rgba(255, 255, 255, 0.85);
+  --account-profile-bg: rgba(255, 255, 255, 0.9);
+  --deemphasized-text-color: #666;
+  --focus-outline: #c8bfec;
+  --very-deemphasized-text-color: #757575;
+  --very-deemphasized-link-color: var(--very-deemphasized-text-color);
+  --status-direct-background: #d2cbf0;
+  --main-theme-color: #6248CA;
+  --warning-color: #e01f19;
+  --alt-input-bg: rgba(255, 255, 255, 0.9);
+  --muted-modal-text: white;
+  --muted-modal-bg: transparent;
+  --muted-modal-focus: #999;
+  --muted-modal-hover: rgba(255, 255, 255, 0.2);
+  --compose-autosuggest-item-hover: #cfc7ef;
+  --compose-autosuggest-item-active: #beb3e9;
+  --compose-autosuggest-outline: #d9d2f2;
+  --compose-button-halo: rgba(255, 255, 255, 0.1);
+  --file-drop-mask: rgba(255, 255, 255, 0.8);
+  --banner-fill: #6248CA;
+  --tab-bg: white;
+  --tab-bg-non-selected: #f7f7f7;
+  --tab-bg-active: #bfbfbf;
+  --tab-bg-hover: #fafafa;
+  --tab-bg-hover-non-selected: #f2f2f2;
+  --tooltip-bg: rgba(30, 30, 30, 0.9);
+  --tooltip-color: white;
+  --floating-button-bg: rgba(255, 255, 255, 0.8);
+  --floating-button-bg-hover: rgba(242, 242, 242, 0.9);
+  --floating-button-bg-active: rgba(230, 230, 230, 0.9);
+  --length-indicator-color: #6248CA;
+  --audio-bg: rgba(30, 30, 30, 0.8);
+  --focal-img-backdrop-filter: rgba(255, 255, 255, 0.5);
+  --focal-img-bg: rgba(255, 255, 255, 0.3);
+  --focal-bg: rgba(51, 51, 51, 0.8);
+  --focal-bg-drag: rgba(51, 51, 51, 0.9);
+  --focal-bg-hover: rgba(64, 64, 64, 0.8);
+  --focal-color: white;
+  --focus-bg: rgba(0, 0, 0, 0.1);
+  --verified-text-color: #00703C;
+  --verified-bg-color: #E1EFE8;
+  accent-color: #6248CA;
+  color-scheme: light;
+}
+
+:root {
+  --warn-color: #e14154;
+  --status-pad-v: 10px;
+  --status-pad-h: 20px;
+  --nav-font-size: 1rem;
+  --nav-indicator-height: 3px;
+  --nav-border-bottom: 0px;
+  --nav-icon-pad-v: 14px;
+  --nav-icon-pad-h: 20px;
+  --nav-icon-size: 20px;
+  --nav-total-height: calc(
+    (var(--nav-icon-pad-v) * 2) +
+    var(--nav-icon-size) +
+    var(--nav-indicator-height) +
+    var(--nav-border-bottom)
+  );
+  --main-content-gap-top: 20px;
+  --main-content-pad-vertical: calc(
+    var(--nav-total-height) +
+    var(--main-content-gap-top)
+  );
+  --main-content-pad-top: var(--main-content-pad-vertical);
+  --main-content-pad-bottom: 0px;
+  --main-margin-bottom: 15px;
+  --main-border-size: 1px;
+  --nav-top: 0px;
+  --nav-bottom: initial;
+  --toast-gap-bottom: 0px;
+  --fab-gap-top: var(--nav-total-height);
+  --focus-width: 2px;
+}
+@media (max-width: 767px) {
+  :root {
+    --status-pad-h: 10px;
+  }
+}
+@media (max-width: 240px) {
+  :root {
+    --status-pad-h: 5px;
+  }
+}
+@media (max-width: 991px) {
+  :root {
+    --nav-icon-pad-v: 18px;
+    --nav-icon-pad-h: 10px;
+    --nav-icon-size: 25px;
+    --nav-border-bottom: 0px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --main-content-gap-top: 0px;
+  }
+}
+@media (max-width: 240px) {
+  :root {
+    --nav-icon-pad-v: 10px;
+    --nav-icon-pad-h: 0px;
+  }
+}
+@media (max-width: 240px) {
+  :root {
+    --focus-width: 3px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--body-text-color);
+  background: var(--body-bg);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+@media (max-width: 240px) {
+  body {
+    font-size: 0.75em; /* tiny text for tiny screens */
+  }
+}
+
+.main-content {
+  contain: content;
+  padding-top: var(--main-content-pad-top);
+  padding-bottom: var(--main-content-pad-bottom);
+}
+@supports not (contain: content) {
+  .main-content {
+    isolation: isolate;
+  }
+}
+
+main {
+  position: relative;
+  width: 602px;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 auto var(--main-margin-bottom);
+  background: var(--main-bg);
+  border: var(--main-border-size) solid var(--main-border);
+  border-radius: 1px;
+  min-height: 70vh;
+}
+
+footer {
+  width: 602px;
+  max-width: 100vw;
+  box-sizing: border-box;
+  margin: 15px auto;
+  border-radius: 1px;
+  background: var(--main-bg);
+  font-size: 0.9em;
+  padding: 20px;
+  border: 1px solid var(--main-border);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+a {
+  color: var(--anchor-text);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--anchor-text);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  border: 1px solid var(--input-border);
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+input[type=search] {
+  -webkit-appearance: none;
+}
+
+input, textarea {
+  background: inherit;
+  color: inherit;
+  border-radius: var(--input-border-radius-size);
+  padding: 5px 8px;
+}
+
+::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+button, .button {
+  font-size: 1.2em;
+  background: var(--button-bg);
+  border-radius: var(--input-border-radius-size);
+  padding: 12px 15px;
+  border: 1px solid var(--button-border);
+  cursor: pointer;
+  color: var(--button-text);
+}
+button:hover, .button:hover {
+  background: var(--button-bg-hover);
+  text-decoration: none;
+}
+button:active, .button:active {
+  background: var(--button-bg-active);
+}
+button[disabled], .button[disabled] {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+button.primary, .button.primary {
+  border: 1px solid var(--button-primary-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+button.primary:hover, .button.primary:hover {
+  background: var(--button-primary-bg-hover);
+}
+button.primary:active, .button.primary:active {
+  background: var(--button-primary-bg-active);
+}
+
+p, label, input {
+  font-size: 1.3em;
+}
+
+ul, li, p {
+  padding: 0;
+  margin: 0;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* Firefox hacks to remove ugly red border.
+   Unnecessary since it gives a warning if you submit an empty field anyway. */
+input:required, input:invalid {
+  box-shadow: none;
+}
+
+textarea {
+  font-family: CountryFlagEmojiPolyfill, system-ui, -apple-system, sans-serif;
+  font-size: inherit;
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 0.6s steps(8) infinite;
+}
+
+.ellipsis::after {
+  content: "…";
+}
+
+/* via https://stackoverflow.com/a/19758620 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* this gets injected as raw HTML, so it's easiest to just define it in global.scss */
+.inline-custom-emoji {
+  width: 1.4em;
+  height: 1.4em;
+  margin: -0.1em 0;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.inline-emoji {
+  font-family: CountryFlagEmojiPolyfill, sans-serif;
+}
+
+.invisible {
+  /* copied from Mastodon */
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+:focus {
+  outline: var(--focus-width) solid var(--focus-outline);
+}
+
+.container:focus {
+  outline: none;
+}
+
+/* Special class to make focus outlines easier to see in some odd
+ * cases where the outline would be clipped. */
+/* TODO: use box-sizing:border-box everywhere so we can get rid of this hack */
+.focus-fix:focus {
+  outline-offset: calc(-1 * var(--focus-width)); /* TODO: this is hacky, switch to box-sizing:border-box */
+}
+
+/* Another hack to make some focus styles appear better */
+.focus-after {
+  position: relative;
+}
+.focus-after:focus {
+  outline: none;
+}
+.focus-after:focus::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  content: "";
+  border: var(--focus-width) solid var(--focus-outline);
+  pointer-events: none;
+}
+
+@media (max-width: 240px) {
+  a:not(.button):focus, span:focus {
+    background: var(--focus-bg) !important;
+  }
+  button:focus, .button:focus {
+    opacity: 0.7;
+  }
+  button.primary:focus, .button.primary:focus {
+    opacity: 0.8;
+  }
+  button, .button, a.main-nav-link {
+    position: relative;
+  }
+  button:focus, .button:focus, a.main-nav-link:focus {
+    outline: none;
+  }
+  button:focus::after, .button:focus::after, a.main-nav-link:focus::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    content: "";
+    border: var(--focus-width) solid var(--focus-outline);
+    pointer-events: none;
+  }
+}
