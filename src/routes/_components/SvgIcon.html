@@ -7,7 +7,6 @@
   <use xlink:href="{inline ? '' : '/icons.svg'}{href}" />
 </svg>
 <script>
-  import { animate } from '../_utils/animate.js'
   import { store } from '../_store/store.js'
 
   const inlineSvgs = new Set(process.env.INLINE_SVGS)
@@ -21,14 +20,6 @@
     store: () => store,
     computed: {
       inline: ({ href }) => inlineSvgs.has(href)
-    },
-    methods: {
-      animate (animation) {
-        const { reduceMotion } = this.store.get()
-        if (animation && !reduceMotion) {
-          animate(this.refs.svg, animation)
-        }
-      }
     }
   }
 </script>

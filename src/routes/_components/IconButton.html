@@ -157,12 +157,6 @@
       ariaLabel: ({ pressable, pressed, label, pressedLabel }) => ((pressable && pressed) ? pressedLabel : label)
     },
     methods: {
-      animate (animation, checkmarkAnimation) {
-        this.refs.svg.animate(animation)
-        if (checkmarkAnimation && this.get().checked) {
-          this.refs.check.animate(checkmarkAnimation)
-        }
-      },
       onClick (e) {
         this.fire('click', e)
       }
