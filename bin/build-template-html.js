@@ -2,13 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import { buildSass } from './build-sass.js'
 import { buildSvg } from './build-svg.js'
-import { performance } from 'perf_hooks'
-import { debounce } from '../src/routes/_thirdparty/lodash/timers.js'
 import applyIntl from '../webpack/svelte-intl-loader.js'
 import { LOCALE } from '../src/routes/_static/intl.js'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const DEBOUNCE = 500
 
 const builders = [
   {
