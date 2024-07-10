@@ -1,4 +1,3 @@
-import { mark, stop } from './marks.js'
 import { massageStatusPlainText } from './massageStatusPlainText.js'
 
 const domParser = process.browser && new DOMParser()
@@ -37,11 +36,8 @@ export function statusHtmlToPlainText (html, mentions) {
   if (!html) {
     return ''
   }
-  mark('statusHtmlToPlainText')
   html = massageStatusPlainText(html)
   const doc = domParser.parseFromString(html, 'text/html')
   massageMentions(doc, mentions)
-  const res = innerTextRetainingNewlines(doc)
-  stop('statusHtmlToPlainText')
-  return res
+  return innerTextRetainingNewlines(doc)
 }

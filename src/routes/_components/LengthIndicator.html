@@ -14,7 +14,6 @@
   }
 </style>
 <script>
-  import { mark, stop } from '../_utils/marks.js'
   import { store } from '../_store/store.js'
   import { observe } from 'svelte-extras'
   import { throttleTimer } from '../_utils/throttleTimer.js'
@@ -30,10 +29,8 @@
       // perf improvement for keyboard input latency
       this.observe('lengthToDisplay', () => {
         updateDisplayedLength(() => {
-          mark('set lengthToDisplayDeferred')
           const { lengthToDisplay } = this.get()
           this.set({ lengthToDisplayDeferred: lengthToDisplay })
-          stop('set lengthToDisplayDeferred')
         })
       }, { init: false })
     },

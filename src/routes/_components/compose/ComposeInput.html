@@ -59,7 +59,6 @@
   import { store } from '../../_store/store.js'
   import { autosize } from '../../_thirdparty/autosize/autosize.js'
   import { scheduleIdleTask } from '../../_utils/scheduleIdleTask.js'
-  import { mark, stop } from '../../_utils/marks.js'
   import { selectionChange } from '../../_utils/events.js'
   import {
     clickSelectedAutosuggestionUsername,
@@ -109,9 +108,7 @@
             }
             // this next autosize is required to resize after
             // the user clicks the "toot" button
-            mark('autosize.update()')
             autosize.update(textarea)
-            stop('autosize.update()')
           }
           if (firstTime) {
             firstTime = false
@@ -134,25 +131,19 @@
         const { realm } = this.get()
         this.observe('rawText', rawText => {
           updateComposeTextInStore(() => {
-            mark('updateComposeTextInStore')
             this.store.setComposeData(realm, { text: rawText })
             this.store.save()
-            stop('updateComposeTextInStore')
           })
         }, { init: false })
       },
       setupAutosize () {
         const textarea = this.refs.textarea
         requestPostAnimationFrame(() => {
-          mark('autosize()')
           autosize(textarea)
-          stop('autosize()')
         })
       },
       teardownAutosize () {
-        mark('autosize.destroy()')
         autosize.destroy(this.refs.textarea)
-        stop('autosize.destroy()')
       },
       onBlur () {
         requestAnimationFrame(() => {

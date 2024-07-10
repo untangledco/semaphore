@@ -1,4 +1,3 @@
-import { mark, stop } from '../../_utils/marks.js'
 import { deleteStatus } from '../deleteStatuses.js'
 import { addStatusOrNotification } from '../addStatusOrNotification.js'
 import { emit } from '../../_utils/eventBus.js'
@@ -12,7 +11,6 @@ export function processMessage (instanceName, timelineName, message) {
     console.warn('ignoring message from server', message)
     return
   }
-  mark('processMessage')
   if (['update', 'notification', 'conversation', 'status.update'].includes(event)) {
     payload = JSON.parse(payload) // only these payloads are JSON-encoded for some reason
   }
@@ -48,5 +46,4 @@ export function processMessage (instanceName, timelineName, message) {
       updateStatus(instanceName, payload)
       break
   }
-  stop('processMessage')
 }

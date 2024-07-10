@@ -16,7 +16,6 @@
   }
 </style>
 <script>
-  import { mark, stop } from '../_utils/marks.js'
   import { store } from '../_store/store.js'
   import { observe } from 'svelte-extras'
   import { throttleTimer } from '../_utils/throttleTimer.js'
@@ -31,10 +30,8 @@
       // perf improvement for keyboard input latency
       this.observe('lengthAsFraction', () => {
         updateDisplayedLength(() => {
-          mark('set lengthAsFractionDeferred')
           const { lengthAsFraction } = this.get()
           this.set({ lengthAsFractionDeferred: lengthAsFraction })
-          stop('set lengthAsFractionDeferred')
           requestAnimationFrame(() => this.set({ shouldAnimate: true }))
         })
       }, { init: false })

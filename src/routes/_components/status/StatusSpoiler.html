@@ -50,7 +50,6 @@
   import Shortcut from '../shortcut/Shortcut.html'
   import { store } from '../../_store/store.js'
   import { registerClickDelegate } from '../../_utils/delegate.js'
-  import { mark, stop } from '../../_utils/marks.js'
   import { on } from '../../_utils/eventBus.js'
   import escapeHtml from 'escape-html'
 
@@ -79,9 +78,7 @@
         spoilersShown[uuid] = typeof shown === 'undefined' ? !currentValue : !!shown
         this.store.set({ spoilersShown })
         requestAnimationFrame(() => {
-          mark('clickSpoilerButton')
           this.fire('recalculateHeight')
-          stop('clickSpoilerButton')
         })
         return true
       }

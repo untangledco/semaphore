@@ -4,7 +4,6 @@ import { createStream } from '../../_actions/stream/streaming.js'
 import { updatePushSubscriptionForInstance } from '../../_actions/pushSubscription.js'
 import { setupCustomEmojiForInstance } from '../../_actions/emoji.js'
 import { scheduleIdleTask } from '../../_utils/scheduleIdleTask.js'
-import { mark, stop } from '../../_utils/marks.js'
 import { store } from '../store.js'
 import { updateFollowRequestCountIfLockedAccount } from '../../_actions/followRequests.js'
 import { setupFiltersForInstance } from '../../_actions/filters.js'
@@ -13,9 +12,7 @@ import { setupFiltersForInstance } from '../../_actions/filters.js'
 let currentInstanceStream
 
 async function refreshInstanceDataAndStream (store, instanceName) {
-  mark(`refreshInstanceDataAndStream-${instanceName}`)
   await doRefreshInstanceDataAndStream(store, instanceName)
-  stop(`refreshInstanceDataAndStream-${instanceName}`)
 }
 
 function currentInstanceChanged (store, instanceName) {

@@ -1,4 +1,3 @@
-import { mark, stop } from '../../_utils/marks.js'
 import { RealmStore } from '../../_utils/RealmStore.js'
 import { reselect } from '../../_utils/reselect.js'
 
@@ -44,7 +43,6 @@ virtualListStore.compute('rawVisibleItems',
     if (process.browser && process.env.NODE_ENV !== 'production') {
       window.rawVisibleItemsComputed = (window.rawVisibleItemsComputed || 0) + 1
     }
-    mark('compute visibleItems')
     if (!items) {
       return null
     }
@@ -75,7 +73,6 @@ virtualListStore.compute('rawVisibleItems',
         index: i
       })
     }
-    stop('compute visibleItems')
     return visibleItems
   })
 

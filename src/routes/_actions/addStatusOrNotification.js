@@ -1,4 +1,3 @@
-import { mark, stop } from '../_utils/marks.js'
 import { store } from '../_store/store.js'
 import { uniqBy, isEqual } from '../_thirdparty/lodash/objects.js'
 import { database } from '../_database/database.js'
@@ -89,7 +88,6 @@ async function insertUpdatesIntoThreads (instanceName, updates) {
 }
 
 async function processFreshUpdates (instanceName, timelineName) {
-  mark('processFreshUpdates')
   const freshUpdates = store.getForTimeline(instanceName, timelineName, 'freshUpdates')
   if (freshUpdates && freshUpdates.length) {
     const updates = freshUpdates.slice()
@@ -100,7 +98,6 @@ async function processFreshUpdates (instanceName, timelineName) {
       insertUpdatesIntoThreads(instanceName, updates.filter(status => status.in_reply_to_id))
     ])
   }
-  stop('processFreshUpdates')
 }
 
 function lazilyProcessFreshUpdates (instanceName, timelineName) {

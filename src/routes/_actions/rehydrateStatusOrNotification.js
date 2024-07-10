@@ -1,5 +1,4 @@
 import { get } from '../_utils/lodash-lite.js'
-import { mark, stop } from '../_utils/marks.js'
 import { decode as decodeBlurhash, init as initBlurhash } from '../_utils/blurhash.js'
 import { scheduleIdleTask } from '../_utils/scheduleIdleTask.js'
 import { statusHtmlToPlainText } from '../_utils/statusHtmlToPlainText.js'
@@ -27,7 +26,6 @@ async function decodeAllBlurhashes (statusOrNotification) {
     .concat(get(status, ['reblog', 'media_attachments'], []))
     .filter(_ => _.blurhash)
   if (mediaWithBlurhashes.length) {
-    mark(`decodeBlurhash-${status.id}`)
     await Promise.all(mediaWithBlurhashes.map(async media => {
       try {
         media.decodedBlurhash = await decodeBlurhash(media.blurhash)
@@ -35,7 +33,6 @@ async function decodeAllBlurhashes (statusOrNotification) {
         console.warn('Could not decode blurhash, ignoring', err)
       }
     }))
-    stop(`decodeBlurhash-${status.id}`)
   }
 }
 

@@ -4,7 +4,6 @@ import { store } from '../store.js'
 import { isEqual } from '../../_thirdparty/lodash/objects.js'
 import { computeFilterContextsForStatusOrNotification } from '../../_utils/computeFilterContextsForStatusOrNotification.js'
 import { database } from '../../_database/database.js'
-import { mark, stop } from '../../_utils/marks.js'
 
 export function wordFilterObservers () {
   if (!process.browser) {
@@ -42,7 +41,6 @@ export function wordFilterObservers () {
 
   store.observe('unexpiredInstanceFilterRegexes', async unexpiredInstanceFilterRegexes => {
     console.log('unexpiredInstanceFilterRegexes changed, recomputing filterContexts')
-    mark('update timeline item summary filter contexts')
     // Whenever the filters change, we need to re-compute the filterContexts on the TimelineSummaries.
     // This is a bit of an odd design, but we do it for perf. See timelineItemToSummary.js for details.
     let {
@@ -92,6 +90,5 @@ export function wordFilterObservers () {
       // eslint-disable-next-line camelcase
       store.set({ timelineData_timelineItemSummaries, timelineData_timelineItemSummariesToAdd })
     }
-    stop('update timeline item summary filter contexts')
   }, { init: false })
 }

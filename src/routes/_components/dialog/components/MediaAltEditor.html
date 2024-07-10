@@ -93,7 +93,6 @@
 </style>
 <script>
   import { requestPostAnimationFrame } from '../../../_utils/requestPostAnimationFrame.js'
-  import { mark, stop } from '../../../_utils/marks.js'
   import { autosize } from '../../../_thirdparty/autosize/autosize.js'
   import { observe } from 'svelte-extras'
   import { throttleTimer } from '../../../_utils/throttleTimer.js'
@@ -168,15 +167,11 @@
       setupAutosize () {
         const textarea = this.refs.textarea
         requestPostAnimationFrame(() => {
-          mark('autosize()')
           autosize(textarea)
-          stop('autosize()')
         })
       },
       teardownAutosize () {
-        mark('autosize.destroy()')
         autosize.destroy(this.refs.textarea)
-        stop('autosize.destroy()')
       },
       measure () {
         autosize.update(this.refs.textarea)

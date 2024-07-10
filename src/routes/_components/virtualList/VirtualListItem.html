@@ -26,7 +26,6 @@
 <script>
   import { virtualListStore } from './virtualListStore.js'
   import { registerResizeListener, unregisterResizeListener } from '../../_utils/resize.js'
-  import { mark, stop } from '../../_utils/marks.js'
   import { requestPostAnimationFrame } from '../../_utils/requestPostAnimationFrame.js'
   import { observe } from 'svelte-extras'
   import { doubleRAF } from '../../_utils/doubleRAF.js'
@@ -39,9 +38,7 @@
         if (!node || !key) {
           return
         }
-        mark('VirtualListItem gBCR')
         const rect = node.getBoundingClientRect()
-        stop('VirtualListItem gBCR')
         // update all item heights in one batch for better perf
         this.store.batchUpdateForRealm('itemHeights', key, rect.height)
       })

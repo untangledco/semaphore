@@ -3,7 +3,6 @@
 // for a good breakdown of the concepts behind this.
 
 import Queue from 'tiny-queue'
-import { mark, stop } from './marks.js'
 
 const taskQueue = new Queue()
 let runningRequestIdleCallback = false
@@ -24,7 +23,6 @@ function getIsInputPending () {
 const isInputPending = getIsInputPending()
 
 function runTasks (deadline) {
-  mark('scheduleIdleTask:runTasks()')
   // Bail out early if our deadline has passed (probably ~50ms) or if there is input pending
   // See https://web.dev/isinputpending/
   while (taskQueue.length && deadline.timeRemaining() > 0 && !isInputPending()) {
@@ -41,7 +39,6 @@ function runTasks (deadline) {
   } else {
     runningRequestIdleCallback = false
   }
-  stop('scheduleIdleTask:runTasks()')
 }
 
 export function scheduleIdleTask (task) {

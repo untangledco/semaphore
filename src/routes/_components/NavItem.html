@@ -125,7 +125,6 @@
   import NavItemIcon from './NavItemIcon.html'
   import { store } from '../_store/store.js'
   import { on, emit } from '../_utils/eventBus.js'
-  import { mark, stop } from '../_utils/marks.js'
   import { doubleRAF } from '../_utils/doubleRAF.js'
   import { scrollToTop } from '../_utils/scrollToTop.js'
   import { normalizePageName } from '../_utils/normalizePageName.js'
@@ -191,16 +190,12 @@
       },
       animatePart1 ({ toPage }) {
         const indicator = this.refs.indicator
-        mark('animateNavPart1 gBCR')
         const fromRect = indicator.getBoundingClientRect()
-        stop('animateNavPart1 gBCR')
         emit('animateNavPart2', { fromRect, toPage })
       },
       animatePart2 ({ fromRect }) {
         const { indicator } = this.refs
-        mark('animateNavPart2 gBCR')
         const toRect = indicator.getBoundingClientRect()
-        stop('animateNavPart2 gBCR')
         const translateX = fromRect.left - toRect.left
         const scaleX = fromRect.width / toRect.width
         indicator.style.transform = `translateX(${translateX}px) scaleX(${scaleX})`

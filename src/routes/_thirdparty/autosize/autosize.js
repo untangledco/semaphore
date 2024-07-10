@@ -1,9 +1,8 @@
 // Modified from https://github.com/jackmoore/autosize/blob/113f1b3/src/autosize.js
 // The only change is to remove IE-specific hacks,
 // remove parent overflow checks, make page resizes more performant,
-// add deferredUpdate, and add perf marks.
+// add deferredUpdate.
 
-import { mark, stop } from '../../_utils/marks.js'
 import { debounce } from '../../_thirdparty/lodash/timers.js'
 import { getScrollContainer } from '../../_utils/scrollContainer.js'
 import { throttleTimer } from '../../_utils/throttleTimer.js'
@@ -34,9 +33,7 @@ function assign (ta) {
   }
 
   function resize () {
-    mark('autosize:resize()')
     _resize()
-    stop('autosize:resize()')
   }
 
   function _resize () {
@@ -59,9 +56,7 @@ function assign (ta) {
   const deferredUpdate = () => doUpdate(update)
 
   function update () {
-    mark('autosize:update()')
     _update()
-    stop('autosize:update()')
   }
 
   function _update () {

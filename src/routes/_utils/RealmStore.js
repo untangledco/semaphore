@@ -2,7 +2,6 @@
 // Each realm has self-contained data that you can set with setForRealm() and compute
 // with computeForRealm(). The maxSize determines how many realms to keep in the LRU cache.
 import { QuickLRU } from '../_thirdparty/quick-lru/quick-lru.js'
-import { mark, stop } from './marks.js'
 import { requestPostAnimationFrame } from './requestPostAnimationFrame.js'
 import * as storePackage from 'svelte/store.umd.js'
 
@@ -59,7 +58,6 @@ export class RealmStore extends Store {
       if (!updatedKeys.length) {
         return
       }
-      mark('batchUpdate')
       const obj = this.get()[key]
       for (const otherKey of updatedKeys) {
         obj[otherKey] = batch[otherKey]
@@ -68,7 +66,6 @@ export class RealmStore extends Store {
       const { realms } = this.get()
       realms.set(currentRealm, Object.assign(realms.get(currentRealm) || {}, { [key]: obj }))
       this.set({ realms })
-      stop('batchUpdate')
     })
   }
 }

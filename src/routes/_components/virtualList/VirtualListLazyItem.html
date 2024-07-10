@@ -8,7 +8,6 @@
 {/if}
 <script>
   import VirtualListItem from './VirtualListItem.html'
-  import { mark, stop } from '../../_utils/marks.js'
   import { scheduleIdleTask } from '../../_utils/scheduleIdleTask.js'
   import { createPriorityQueue } from '../../_utils/createPriorityQueue.js'
   import { isMobile } from '../../_utils/userAgent/isMobile.js'
@@ -33,9 +32,7 @@
         priorityQueue(index).then(async () => {
           const props = await makeProps(key)
           const setProps = () => {
-            mark('VirtualListLazyItem set props')
             this.set({ props })
-            stop('VirtualListLazyItem set props')
           }
           // On desktop, if prefers-reduced-motion is enabled, avoid using scheduleIdleTask
           // here because it causes the scrollbar to grow in a way that may sicken

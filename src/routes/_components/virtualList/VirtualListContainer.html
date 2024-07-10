@@ -3,7 +3,6 @@
   import { virtualListStore } from './virtualListStore.js'
   import { throttle } from '../../_thirdparty/lodash/timers.js'
   import { isFullscreen, attachFullscreenListener, detachFullscreenListener } from '../../_utils/fullscreen.js'
-  import { mark, stop } from '../../_utils/marks.js'
   import { doubleRAF } from '../../_utils/doubleRAF.js'
   import { observe } from 'svelte-extras'
   import {
@@ -18,7 +17,6 @@
 
   export default {
     oncreate () {
-      mark('onCreate VirtualListContainer')
       const {
         realm
       } = this.get()
@@ -35,10 +33,8 @@
           if (!initializedScrollTop && allVisibleItemsHaveHeight) {
             this.set({ initializedScrollTop: true })
             requestAnimationFrame(() => {
-              mark('set scrollTop')
               console.log('forcing scroll top to ', scrollTop)
               scrollContainer.scrollTop = scrollTop
-              stop('set scrollTop')
               doubleRAF(() => {
                 console.log('initialized VirtualList (1)')
                 this.fire('initialized')
@@ -57,7 +53,6 @@
         this.onResize()
       }
       registerResizeListener(this.onResize)
-      stop('onCreate VirtualListContainer')
     },
     ondestroy () {
       this.teardownScroll()
@@ -95,16 +90,12 @@
         const { scrollTop, scrollHeight } = getScrollContainer()
 
         doubleRAF(() => {
-          mark('onScroll -> setForRealm()')
           this.store.setForRealm({ scrollTop, scrollHeight })
-          stop('onScroll -> setForRealm()')
         })
       },
       onFullscreenChange () {
-        mark('onFullscreenChange')
         console.log('is fullscreen? ', isFullscreen())
         this.set({ fullscreen: isFullscreen() })
-        stop('onFullscreenChange')
       },
       onResize () {
         this.store.setForRealm({

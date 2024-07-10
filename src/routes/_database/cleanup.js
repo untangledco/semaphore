@@ -11,7 +11,6 @@ import {
   TIMESTAMP
 } from './constants.js'
 import { debounce } from '../_thirdparty/lodash/timers.js'
-import { mark, stop } from '../_utils/marks.js'
 import { deleteAll } from './utils.js'
 import { createPinnedStatusKeyRange, createThreadKeyRange } from './keys.js'
 import { getKnownInstances } from './knownInstances.js'
@@ -100,7 +99,6 @@ function cleanupRelationships (relationshipsStore, cutoff) {
 
 export async function cleanup (instanceName) {
   console.log('cleanup', instanceName)
-  mark(`cleanup:${instanceName}`)
   const db = await getDatabase(instanceName)
   const storeNames = [
     STATUSES_STORE,
@@ -131,7 +129,6 @@ export async function cleanup (instanceName) {
     cleanupAccounts(accountsStore, pinnedStatusesStore, cutoff)
     cleanupRelationships(relationshipsStore, cutoff)
   })
-  stop(`cleanup:${instanceName}`)
 }
 
 function doCleanup (instanceName) {

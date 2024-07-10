@@ -23,7 +23,6 @@
 <script>
   import { virtualListStore } from './virtualListStore.js'
   import { doubleRAF } from '../../_utils/doubleRAF.js'
-  import { mark, stop } from '../../_utils/marks.js'
   import { observe } from 'svelte-extras'
 
   export default {
@@ -50,9 +49,7 @@
         }
         this.set({ heightCalculated: true })
         requestAnimationFrame(() => {
-          mark('VirtualListHeader gBCR')
           const rect = this.refs.node.getBoundingClientRect()
-          stop('VirtualListHeader gBCR')
           this.store.setForRealm({ headerHeight: rect.height })
         })
       }

@@ -83,7 +83,6 @@
 
 </style>
 <script>
-  import { mark, stop } from '../../_utils/marks.js'
   import { store } from '../../_store/store.js'
   import { classname } from '../../_utils/classname.js'
   import { massageUserText } from '../../_utils/massageUserText.js'
@@ -110,7 +109,6 @@
     },
     methods: {
       hydrateContent () {
-        mark('hydrateContent')
         const node = this.refs.node
         const { originalStatus, uuid } = this.get()
         const { mentions, tags } = originalStatus
@@ -148,7 +146,6 @@
             anchor.setAttribute('rel', 'nofollow noopener')
           }
         }
-        stop('hydrateContent')
       }
     }
   }

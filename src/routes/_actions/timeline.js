@@ -1,7 +1,6 @@
 import { store } from '../_store/store.js'
 import { getTimeline } from '../_api/timelines.js'
 import { toast } from '../_components/toast/toast.js'
-import { mark, stop } from '../_utils/marks.js'
 import { concat, mergeArrays } from '../_utils/arrays.js'
 import { compareTimelineItemSummaries } from '../_utils/statusIdSorting.js'
 import { uniqBy, isEqual } from '../_thirdparty/lodash/objects.js'
@@ -96,10 +95,8 @@ async function fetchTimelineItemsFromNetwork (instanceName, accessToken, timelin
 }
 async function addPagedTimelineItems (instanceName, timelineName, items) {
   console.log('addPagedTimelineItems, length:', items.length)
-  mark('addPagedTimelineItemSummaries')
   const newSummaries = items.map(item => timelineItemToSummary(item, instanceName))
   await addPagedTimelineItemSummaries(instanceName, timelineName, newSummaries)
-  stop('addPagedTimelineItemSummaries')
 }
 
 export async function addPagedTimelineItemSummaries (instanceName, timelineName, newSummaries) {
@@ -127,7 +124,6 @@ async function fetchPagedItems (instanceName, accessToken, timelineName) {
 }
 
 async function fetchTimelineItems (instanceName, accessToken, timelineName, online) {
-  mark('fetchTimelineItems')
   const { lastTimelineItemId } = store.get()
   let items
   let stale = false
@@ -146,16 +142,13 @@ async function fetchTimelineItems (instanceName, accessToken, timelineName, onli
       stale = true
     }
   }
-  stop('fetchTimelineItems')
   return { items, stale }
 }
 
 async function addTimelineItems (instanceName, timelineName, items, stale) {
   console.log('addTimelineItems, length:', items.length)
-  mark('addTimelineItemSummaries')
   const newSummaries = items.map(item => timelineItemToSummary(item, instanceName))
   addTimelineItemSummaries(instanceName, timelineName, newSummaries, stale)
-  stop('addTimelineItemSummaries')
 }
 
 export async function addTimelineItemSummaries (instanceName, timelineName, newSummaries, newStale) {
@@ -174,7 +167,6 @@ export async function addTimelineItemSummaries (instanceName, timelineName, newS
 
 async function fetchTimelineItemsAndPossiblyFallBack () {
   console.log('fetchTimelineItemsAndPossiblyFallBack')
-  mark('fetchTimelineItemsAndPossiblyFallBack')
   const {
     currentTimeline,
     currentInstance,
@@ -190,12 +182,10 @@ async function fetchTimelineItemsAndPossiblyFallBack () {
     const { items, stale } = await fetchTimelineItems(currentInstance, accessToken, currentTimeline, online)
     await addTimelineItems(currentInstance, currentTimeline, items, stale)
   }
-  stop('fetchTimelineItemsAndPossiblyFallBack')
 }
 
 export async function setupTimeline () {
   console.log('setupTimeline')
-  mark('setupTimeline')
   // If we don't have any item summaries, or if the current item summaries are stale
   // (i.e. via offline mode), then we need to re-fetch
   // Also do this if it's a thread, because threads change pretty frequently and
@@ -211,7 +201,6 @@ export async function setupTimeline () {
       currentTimeline.startsWith('status/')) {
     await fetchTimelineItemsAndPossiblyFallBack()
   }
-  stop('setupTimeline')
 }
 
 export async function fetchMoreItemsAtBottomOfTimeline (instanceName, timelineName) {
@@ -223,7 +212,6 @@ export async function fetchMoreItemsAtBottomOfTimeline (instanceName, timelineNa
 }
 
 export async function showMoreItemsForTimeline (instanceName, timelineName) {
-  mark('showMoreItemsForTimeline')
   let itemSummariesToAdd = store.getForTimeline(instanceName, timelineName, 'timelineItemSummariesToAdd') || []
   itemSummariesToAdd = itemSummariesToAdd.sort(compareTimelineItemSummaries).reverse()
   addTimelineItemSummaries(instanceName, timelineName, itemSummariesToAdd, false)
@@ -232,7 +220,6 @@ export async function showMoreItemsForTimeline (instanceName, timelineName) {
     shouldShowHeader: false,
     showHeader: false
   })
-  stop('showMoreItemsForTimeline')
 }
 
 export function showMoreItemsForCurrentTimeline () {
@@ -244,7 +231,6 @@ export function showMoreItemsForCurrentTimeline () {
 }
 
 export async function showMoreItemsForThread (instanceName, timelineName) {
-  mark('showMoreItemsForThread')
   const itemSummariesToAdd = store.getForTimeline(instanceName, timelineName, 'timelineItemSummariesToAdd')
   const timelineItemSummaries = store.getForTimeline(instanceName, timelineName, 'timelineItemSummaries')
   const timelineItemIds = new Set(timelineItemSummaries.map(_ => _.id))
@@ -260,5 +246,4 @@ export async function showMoreItemsForThread (instanceName, timelineName) {
     timelineItemSummariesToAdd: [],
     timelineItemSummaries: sortedTimelineItemSummaries
   })
-  stop('showMoreItemsForThread')
 }

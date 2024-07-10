@@ -1,6 +1,5 @@
 import interpret from 'format-message-interpret'
 import { LOCALE } from '../_static/intl.js'
-import { mark, stop } from './marks.js'
 
 function doFormatIntl (ast, values) {
   return interpret(ast, LOCALE)(values).trim().replace(/\s+/g, ' ')
@@ -19,9 +18,5 @@ export function formatIntl (ast, values) {
       throw new Error('bad ast or values : ' + ast + ' ' + values)
     }
   }
-
-  mark('formatIntl')
-  const res = doFormatIntl(ast, values)
-  stop('formatIntl')
-  return res
+  return doFormatIntl(ast, values)
 }

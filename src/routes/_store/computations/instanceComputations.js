@@ -1,4 +1,3 @@
-import { mark, stop } from '../../_utils/marks.js'
 import { MAX_STATUS_CHARS } from '../../_static/statuses.js'
 
 function computeForInstance (store, computedKey, key, defaultValue) {
@@ -8,7 +7,6 @@ function computeForInstance (store, computedKey, key, defaultValue) {
 }
 
 export function instanceComputations (store) {
-  mark('instanceComputations')
   computeForInstance(store, 'currentVerifyCredentials', 'verifyCredentials', null)
   computeForInstance(store, 'currentInstanceInfo', 'instanceInfos', null)
   computeForInstance(store, 'pinnedPage', 'pinnedPages', '/local')
@@ -69,6 +67,4 @@ export function instanceComputations (store) {
       return MAX_STATUS_CHARS
     }
   )
-
-  stop('instanceComputations')
 }

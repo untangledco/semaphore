@@ -1,5 +1,4 @@
 import { database } from '../_database/database.js'
-import { mark, stop } from '../_utils/marks.js'
 import { prepareToRehydrate, rehydrateStatusOrNotification } from './rehydrateStatusOrNotification.js'
 
 async function getNotification (instanceName, timelineType, timelineValue, itemId) {
@@ -24,14 +23,12 @@ export function createMakeProps (instanceName, timelineType, timelineValue) {
   prepareToRehydrate() // start blurhash early to save time
 
   async function fetchFromIndexedDB (itemId) {
-    mark(`fetchFromIndexedDB-${itemId}`)
     try {
       const res = await (timelineType === 'notifications'
         ? getNotification(instanceName, timelineType, timelineValue, itemId)
         : getStatus(instanceName, timelineType, timelineValue, itemId))
       return res
     } finally {
-      stop(`fetchFromIndexedDB-${itemId}`)
     }
   }
 

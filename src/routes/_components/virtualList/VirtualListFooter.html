@@ -12,7 +12,6 @@
 </style>
 <script>
   import { virtualListStore } from './virtualListStore.js'
-  import { mark, stop } from '../../_utils/marks.js'
 
   export default {
     oncreate () {
@@ -22,9 +21,7 @@
           return
         }
 
-        mark('VirtualListFooter gBCR')
         const rect = node.getBoundingClientRect()
-        stop('VirtualListFooter gBCR')
         this.store.setForRealm({ footerHeight: rect.height })
       })
     },
