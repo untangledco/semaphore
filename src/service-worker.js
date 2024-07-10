@@ -32,7 +32,6 @@ const assets = __assets__
   .map(file => file.startsWith('/') ? file : `/${file}`)
   .filter(filename => !filename.endsWith('.map'))
   .filter(filename => filename !== '/robots.txt')
-  .filter(filename => !filename.includes('traineddata.gz')) // cache on-demand
   .filter(filename => !filename.endsWith('.webapp')) // KaiOS manifest
   .filter(filename => !/emoji-.*?\.json$/.test(filename)) // useless to cache; it already goes in IndexedDB
   .filter(filename => !/screenshot-.*?\.png/.test(filename)) // only used during PWA installation, don't bother caching
