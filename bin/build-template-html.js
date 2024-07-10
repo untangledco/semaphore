@@ -1,18 +1,13 @@
 import fs from 'fs'
 import path from 'path'
-import { promisify } from 'util'
 import { buildSass } from './build-sass.js'
 import { buildSvg } from './build-svg.js'
 import { performance } from 'perf_hooks'
 import { debounce } from '../src/routes/_thirdparty/lodash/timers.js'
 import applyIntl from '../webpack/svelte-intl-loader.js'
 import { LOCALE } from '../src/routes/_static/intl.js'
-import rtlDetectPackage from 'rtl-detect'
-
-const { getLangDir } = rtlDetectPackage
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const LOCALE_DIRECTION = getLangDir(LOCALE)
 const DEBOUNCE = 500
 
 const builders = [
@@ -71,7 +66,6 @@ async function buildAll () {
   }
   html = applyIntl(html)
     .replace('{process.env.LOCALE}', LOCALE)
-    .replace('{process.env.LOCALE_DIRECTION}', LOCALE_DIRECTION)
     fs.writeFileSync(path.resolve(__dirname, '../src/template.html'), html, 'utf8')
 }
 
