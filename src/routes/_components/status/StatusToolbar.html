@@ -79,7 +79,6 @@
   import { setReblogged } from '../../_actions/reblog.js'
   import { importShowStatusOptionsDialog } from '../dialog/asyncDialogs/importShowStatusOptionsDialog.js'
   import { updateProfileAndRelationship } from '../../_actions/accounts.js'
-  import { CHECKMARK_ANIMATION, FAVORITE_ANIMATION, REBLOG_ANIMATION } from '../../_static/animations.js'
   import { on } from '../../_utils/eventBus.js'
   import { announceAriaLivePolite } from '../../_utils/announceAriaLivePolite.js'
   import { setStatusBookmarkedOrUnbookmarked } from '../../_actions/bookmark.js'
@@ -122,9 +121,6 @@
         const { originalStatusId, favorited } = this.get()
         const newFavoritedValue = !favorited
         /* no await */ setFavorited(originalStatusId, newFavoritedValue)
-        if (newFavoritedValue) {
-          this.refs.favoriteIcon.animate(FAVORITE_ANIMATION, CHECKMARK_ANIMATION)
-        }
         if (announce) {
           announceAriaLivePolite(newFavoritedValue ? 'intl.favorited' : 'intl.unfavorited')
         }
@@ -133,9 +129,6 @@
         const { originalStatusId, reblogged } = this.get()
         const newRebloggedValue = !reblogged
         /* no await */ setReblogged(originalStatusId, newRebloggedValue)
-        if (newRebloggedValue) {
-          this.refs.reblogIcon.animate(REBLOG_ANIMATION, CHECKMARK_ANIMATION)
-        }
         if (announce) {
           announceAriaLivePolite(newRebloggedValue ? 'intl.reblogged' : 'intl.unreblogged')
         }
@@ -182,10 +175,6 @@
         /* no await */ setStatusBookmarkedOrUnbookmarked(originalStatusId, !originalStatus.bookmarked)
       }
     },
-    data: () => ({
-      favoriteAnimation: FAVORITE_ANIMATION,
-      reblogAnimation: REBLOG_ANIMATION
-    }),
     computed: {
       replyLabel: ({ inReplyToId }) => (
         inReplyToId ? 'intl.replyToThread' : 'intl.reply'
