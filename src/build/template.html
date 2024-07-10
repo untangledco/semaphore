@@ -41,12 +41,6 @@
       --toast-gap-bottom: var(--nav-total-height);
       --fab-gap-top: 0px;
     }
-    @supports not (height: 1dvh) {
-      /* In browsers that don't support dvh, use the large-small-dynamic-viewport-units-polyfill */
-      :root {
-        --nav-top: calc((100 * var(--1dvh)) - var(--nav-total-height));
-      }
-    }
   </style>
 
   <style id="theGrayscaleStyle" media="only x">
