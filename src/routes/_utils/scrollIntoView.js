@@ -2,7 +2,6 @@ import {
   getScrollContainer,
   getOffsetHeight
 } from './scrollContainer.js'
-import { smoothScroll } from './smoothScroll.js'
 
 let mainNavElement
 function getTopOverlay () {
@@ -46,24 +45,5 @@ export function firstVisibleElementIndex (elements) {
 
 export function scrollIntoViewIfNeeded (element) {
   const rect = element.getBoundingClientRect()
-  const topOverlay = getTopOverlay()
-  const offsetHeight = getOffsetHeight()
-  let scrollY = 0
-  if (rect.top < topOverlay) {
-    scrollY = topOverlay
-  } else if (rect.bottom > offsetHeight) {
-    const height = rect.bottom - rect.top
-    if ((offsetHeight - topOverlay) > height) {
-      scrollY = offsetHeight - height
-    } else {
-      // if element height is too great to fit,
-      // prefer showing the top of the element
-      scrollY = topOverlay
-    }
-  } else {
-    return // not needed
-  }
-  const scrollContainer = getScrollContainer()
-  const scrollTop = scrollContainer.scrollTop
-  smoothScroll(scrollContainer, scrollTop + rect.top - scrollY, /* horizontal */ false, /* preferFast */ false)
+  getScrollContainer().scrollTo(rect.x, rect.y)
 }

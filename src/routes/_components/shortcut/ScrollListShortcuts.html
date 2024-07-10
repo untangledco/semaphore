@@ -9,7 +9,6 @@
     removeShortcutFallback,
     onKeyDownInShortcutScope
 } from '../../_utils/shortcuts.js'
-  import { smoothScroll } from '../../_utils/smoothScroll.js'
   import { getScrollContainer } from '../../_utils/scrollContainer.js'
   import { store } from '../../_store/store.js'
   import { emit } from '../../_utils/eventBus.js'
@@ -99,7 +98,7 @@
         if (index === 0 && movement === -1) {
           activeItemKey = null
           this.set({ activeItemKey })
-          smoothScroll(getScrollContainer(), 0, /* horizontal */ false, /* preferFast */ false)
+          getScrollContainer().scrollTo(0,0)
           return
         }
         if (index === -1) {
