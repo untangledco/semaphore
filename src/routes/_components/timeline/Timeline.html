@@ -13,7 +13,6 @@
                   headerComponent={MoreHeaderVirtualWrapper}
                   {headerProps}
                   {scrollToItem}
-                  on:scrollToBottom="onScrollToBottom()"
                   on:scrollToTop="onScrollToTop()"
                   on:scrollTopChanged="onScrollTopChanged(event)"
                   on:initialized="initialize()"
@@ -147,19 +146,6 @@
       onScrollTopChanged (scrollTop) {
         this.set({ scrollTop })
       },
-      onScrollToBottom () {
-        const { timelineType } = this.get()
-        const { timelineInitialized, runningUpdate, disableInfiniteScroll } = this.store.get()
-        if (!timelineInitialized ||
-            runningUpdate ||
-            disableInfiniteScroll ||
-            timelineType === 'status') { // for status contexts, we've already fetched the whole thread
-          return
-        }
-        const { currentInstance } = this.store.get()
-        const { timeline } = this.get()
-        /* no await */ fetchMoreItemsAtBottomOfTimeline(currentInstance, timeline)
-      },
       onScrollToTop () {
         const { shouldShowHeader } = this.store.get()
         if (shouldShowHeader) {
@@ -170,7 +156,7 @@
         }
       },
       setupStreaming () {
-        const { currentInstance, disableInfiniteScroll } = this.store.get()
+        const { currentInstance } = this.store.get()
         const { timeline, timelineType } = this.get()
         const handleItemIdsToAdd = () => {
           const { itemIdsToAdd } = this.get()
@@ -185,17 +171,14 @@
           if (timelineType === 'status') {
             // this is a thread, just insert the statuses already
             showMoreItemsForThread(currentInstance, timeline)
-          } else if (!disableInfiniteScroll && scrollTop === 0 && !shouldShowHeader && !showHeader) {
+          } else if (scrollTop === 0 && !shouldShowHeader && !showHeader) {
             // if the user is scrolled to the top and we're not showing the header, then
             // just insert the statuses. this is "chat room mode"
             showMoreItemsForTimeline(currentInstance, timeline)
           } else {
             // user hasn't scrolled to the top, show a header instead
             this.store.setForTimeline(currentInstance, timeline, { shouldShowHeader: true })
-            // unless the user has disabled infinite scroll entirely
-            if (disableInfiniteScroll) {
-              this.store.setForTimeline(currentInstance, timeline, { showHeader: true })
-            }
+            this.store.setForTimeline(currentInstance, timeline, { showHeader: true })
           }
         }
         this.observe('itemIdsToAdd', (newItemIdsToAdd, oldItemIdsToAdd) => {

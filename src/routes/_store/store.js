@@ -15,7 +15,6 @@ const persistedState = {
   disableFavCounts: false,
   disableFollowerCounts: false,
   disableHotkeys: false,
-  disableInfiniteScroll: false,
   disableLongAriaLabels: false,
   disableNotificationBadge: false,
   disableReblogCounts: false,

@@ -1,18 +1,12 @@
-<div class="loading-footer {shown ? '' : 'hidden'}">
+<div class="loading-footer shown">
   <div class="loading-wrapper {showLoading ? 'shown' : ''}"
        aria-hidden={!showLoading}
   >
-    <!-- Sapper's mousemove event listener schedules style recalculations for the loading spinner in
-         Chrome because it's always animating, even when hidden. So disable animations when not visible
-         to avoid this. -->
-    <LoadingSpinner size={48} animate={showLoading} />
     <span class="loading-footer-info">
       {intl.loadingMore}
     </span>
   </div>
-  <div class="button-wrapper {showLoadButton ? 'shown' : ''}"
-       aria-hidden={!showLoadButton}
-  >
+  <div class="button-wrapper shown">
     <button type="button"
             class="primary"
             on:click="onClickLoadMore(event)">
@@ -33,13 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s linear;
-  }
-  .loading-wrapper.shown {
     opacity: 1;
-    pointer-events: auto;
   }
   .loading-footer-info {
     margin-left: 20px;
@@ -54,14 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: none;
-  }
-  .button-wrapper.shown {
     opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.2s linear 0.2s;
   }
 </style>
 <script>
@@ -91,11 +72,10 @@
     },
     store: () => store,
     computed: {
-      shown: ({ $timelineInitialized, $runningUpdate, $disableInfiniteScroll }) => (
-        $timelineInitialized && ($disableInfiniteScroll || $runningUpdate)
+      shown: ({ $timelineInitialized, $runningUpdate }) => (
+        $timelineInitialized && $runningUpdate
       ),
-      showLoading: ({ $runningUpdate }) => $runningUpdate,
-      showLoadButton: ({ $runningUpdate, $disableInfiniteScroll }) => !$runningUpdate && $disableInfiniteScroll
+      showLoading: ({ $runningUpdate }) => $runningUpdate
     },
     methods: {
       observe,
@@ -114,9 +94,6 @@
           console.error(e)
         }
       }
-    },
-    components: {
-      LoadingSpinner
     }
   }
 </script>

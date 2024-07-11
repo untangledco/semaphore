@@ -1,19 +1,13 @@
 <Nav {page} />
 
 <div class="main-content">
-  <main class="{infiniteScrollPage ? 'infinite-scroll-page' : ''}">
+  <main>
     <svelte:component this={child.component} {...child.props} />
   </main>
   {#if !$isUserLoggedIn && page === 'home'}
   <InformationalFooter />
   {/if}
 </div>
-<style>
-  /* this avoids a flash of the background color when switching timelines */
-  .infinite-scroll-page {
-    min-height: 100vh;
-  }
-</style>
 <script>
   import { store } from './_store/store.js'
   import { observe } from 'svelte-extras'
@@ -36,7 +30,6 @@
     store: () => store,
     computed: {
       page: ({ child }) => child.props.path.slice(1) || 'home',
-      infiniteScrollPage: ({ $isUserLoggedIn, page }) => $isUserLoggedIn && !page.startsWith('settings')
     },
     methods: {
       observe
