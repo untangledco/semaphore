@@ -42,17 +42,6 @@
     }
   </style>
 
-  <style id="theGrayscaleStyle" media="only x">
-    /* Firefox doesn't seem to like applying filter: grayscale() to
-     * the entire body, so we apply individually.
-     */
-    img, svg, video,
-    input[type="checkbox"], input[type="radio"],
-    .inline-emoji, .theme-preview, .account-profile {
-      filter: grayscale(100%);
-    }
-  </style>
-
   <style id="theFocusVisiblePolyfillStyle" media="only x">
     /* polyfill */
     /* Note we have to use [data-focus-visible-added] rather than .focus-visible because
@@ -99,8 +88,6 @@
   %sapper.head%
 </head>
 <body>
-  <!-- inline JS -->
-
   <!-- The application will be rendered inside this element,
        because `templates/client.js` references it -->
   <div id='sapper'>%sapper.html%</div>
