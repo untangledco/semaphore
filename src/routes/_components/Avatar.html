@@ -1,16 +1,5 @@
 {#if error}
 <SvgIcon className={computedClass} style={svgStyle} href="#fa-user" />
-{:elseif $autoplayGifs}
-  <LazyImage
-    className={computedClass}
-    ariaHidden="true"
-    forceSize=true
-    alt=""
-    src={account.avatar}
-    {width}
-    {height}
-    on:imgLoad="set({loaded: true})"
-    on:imgLoadError="set({error: true})" />
 {:else}
   <NonAutoplayImg
     className={computedClass}
@@ -43,7 +32,6 @@
   import { store } from '../_store/store.js'
   import NonAutoplayImg from './NonAutoplayImg.html'
   import { classname } from '../_utils/classname.js'
-  import LazyImage from './LazyImage.html'
   import SvgIcon from './SvgIcon.html'
 
   export default {
@@ -79,7 +67,6 @@
     },
     components: {
       NonAutoplayImg,
-      LazyImage,
       SvgIcon
     }
   }

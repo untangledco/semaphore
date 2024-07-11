@@ -1,4 +1,4 @@
-{#if !blurhash && (type === 'video' || type === 'audio')}
+{#if (type === 'video' || type === 'audio')}
     <button id={elementId}
             type="button"
             class="inline-media play-video-button focus-after {$largeInlineMedia ? '' : 'fixed-size'} {type === 'audio' ? 'play-audio-button' : ''}"
@@ -8,16 +8,12 @@
             style={inlineMediaStyle}>
       <PlayVideoIcon />
       {#if type === 'video'}
-        <LazyImage
+        <img
           alt={description}
           title={description}
           src={previewUrl}
-          fallback={oneTransparentPixel}
-          {blurhash}
           width={inlineWidth}
           height={inlineHeight}
-          background="var(--loading-bg)"
-          {focus}
         />
       {/if}
     </button>
@@ -32,7 +28,7 @@
           {tabindex}
           aria-hidden={ariaHidden}
   >
-  {#if type === 'gifv' && $autoplayGifs && !blurhash}
+  {#if type === 'gifv' && $autoplayGifs}
     <AutoplayVideo
       ariaLabel={animatedLabel}
       poster={previewUrl}
@@ -56,16 +52,10 @@
       {focus}
     />
   {:else}
-    <LazyImage
+    <img
       alt={description}
       title={description}
       src={previewUrl}
-      fallback={oneTransparentPixel}
-      {blurhash}
-      width={inlineWidth}
-      height={inlineHeight}
-      background="var(--loading-bg)"
-      {focus}
     />
   {/if}
 </button>
@@ -107,7 +97,6 @@
   import NonAutoplayGifv from '../NonAutoplayGifv.html'
   import PlayVideoIcon from '../PlayVideoIcon.html'
   import { store } from '../../_store/store.js'
-  import LazyImage from '../LazyImage.html'
   import AutoplayVideo from '../AutoplayVideo.html'
   import { registerClickDelegate } from '../../_utils/delegate.js'
   import { convertCssPropertyToDataUrl } from '../../_utils/convertCssPropertyToDataUrl.js'
@@ -199,7 +188,6 @@ export default {
     components: {
       NonAutoplayGifv,
       PlayVideoIcon,
-      LazyImage,
       AutoplayVideo
     }
   }

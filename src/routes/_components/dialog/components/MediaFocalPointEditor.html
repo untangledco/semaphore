@@ -178,7 +178,6 @@
   import { get } from '../../../_utils/lodash-lite.js'
   import { observe } from 'svelte-extras'
   import { scheduleIdleTask } from '../../../_utils/scheduleIdleTask.js'
-  import { coordsToPercent, percentToCoords } from '../../../_utils/coordsToPercent.js'
   import SvgIcon from '../../SvgIcon.html'
   import { intrinsicScale } from '../../../_thirdparty/intrinsic-scale/intrinsicScale.js'
   import { resize } from '../../../_utils/events.js'
@@ -194,6 +193,9 @@
     float = Math.round(float * 100) / 100
     return float
   }
+
+  const coordsToPercent = coord => ((1 + coord) / 2) * 100
+  const percentToCoords = percent => ((percent / 100) * 2) - 1
 
   export default {
     oncreate () {

@@ -6,7 +6,7 @@
     <div class="card-content">
   {#if imageUrl}
     <div class="status-card-image-container">
-      <LazyImage src={imageUrl} ariaHidden={true} />
+      <img src={imageUrl} ariaHidden={true} />
     </div>
   {/if}
     <span class="card-description">
@@ -82,13 +82,9 @@
 
 </style>
 <script>
-  import LazyImage from '../LazyImage.html'
   import { unescape } from '../../_thirdparty/unescape/unescape.js'
 
   export default {
-    components: {
-      LazyImage
-    },
     computed: {
       card: ({ originalStatus }) => originalStatus.card,
       title: ({ card }) => card.title,
