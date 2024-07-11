@@ -9,9 +9,7 @@
     <div class="report-flex">
       <div class="recent-statuses">
         {#if loading}
-          <div class="loading-spinner-container">
-            <LoadingSpinner />
-          </div>
+          ...
         {:else}
           <ul>
             {#each displayStatuses as status (status.id)}
@@ -155,7 +153,6 @@
 </style>
 <script>
   import GenericConfirmationDialog from './GenericConfirmationDialog.html'
-  import LoadingSpinner from '../../LoadingSpinner.html'
   import { show } from '../helpers/showDialog.js'
   import { close } from '../helpers/closeDialog.js'
   import { oncreate as onCreateDialog } from '../helpers/onCreateDialog.js'
@@ -243,8 +240,7 @@
       }
     },
     components: {
-      GenericConfirmationDialog,
-      LoadingSpinner
+      GenericConfirmationDialog
     }
   }
 </script>

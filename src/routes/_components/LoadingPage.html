@@ -1,6 +1,4 @@
-<div class="loading-page {shown ? '' : 'hidden'}">
-  not a spinner
-</div>
+<div class="loading-page {shown ? '' : 'hidden'}">...</div>
 <style>
   .loading-page {
     position: absolute;
@@ -16,16 +14,7 @@
   }
 </style>
 <script>
-  import LoadingSpinner from './LoadingSpinner.html'
-
-  const SPINNER_DELAY = 700
-
   export default {
-    oncreate () {
-      setTimeout(() => {
-        this.set({ shown: true })
-      }, SPINNER_DELAY)
-    },
     data: () => ({
       shown: false
     }),
