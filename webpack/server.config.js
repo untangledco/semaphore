@@ -7,23 +7,10 @@ import { mode, dev, resolve, inlineSvgs } from './shared.config.js'
 
 const { version } = pkg
 
-// modules that the server should ignore, either because they cause errors or warnings
-// (because they're only used on the client side)
-const NOOP_MODULES = [
-  '../_workers/blurhash.js',
-]
-
-const serverResolve = JSON.parse(JSON.stringify(resolve))
-serverResolve.alias = serverResolve.alias || {}
-NOOP_MODULES.forEach(mod => {
-  serverResolve.alias[mod] = '@stdlib/utils-noop'
-})
-
 export default {
   entry: config.server.entry(),
   output: config.server.output(),
   target: 'node',
-  resolve: serverResolve,
   externals: Object.keys(pkg.dependencies),
   module: {
     rules: [
