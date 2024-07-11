@@ -379,7 +379,6 @@ export default {
   shortAria: 'Использовать метки ARIA для коротких статей',
   theme: 'Тема',
   themeForInstance: 'Тема для {instance}',
-  bottomNav: 'Поместите панель навигации в нижнюю часть экрана',
   centerNav: 'Центрировать панель навигации',
   preferences: 'Предпочтения',
   hotkeySettings: 'Настройки горячих клавиш',

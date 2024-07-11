@@ -380,13 +380,7 @@ export default {
   removeEmoji: 'Remove emoji from user display names',
   shortAria: 'Use short article ARIA labels',
   theme: 'Theme',
-  themeForInstance: 'Theme for {instance}',
-  bottomNav: 'Place the navigation bar at the bottom of the screen',
-  centerNav: 'Center the navigation bar',
   preferences: 'Preferences',
-  hotkeySettings: 'Hotkey settings',
-  disableHotkeys: 'Disable all hotkeys',
-  leftRightArrows: 'Left/right arrow keys change focus rather than columns/media',
   guide: 'Guide',
   reload: 'Reload',
   // Wellness settings

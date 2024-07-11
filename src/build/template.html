@@ -31,17 +31,6 @@
   <link href="/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
   <link rel="me" href="https://fosstodon.org/@semaphore">
 
-  <style id="theBottomNavStyle" media="only x">
-    :root {
-      --nav-top: calc(100dvh - var(--nav-total-height));
-      --nav-bottom: initial;
-      --main-content-pad-top: 0px;
-      --main-content-pad-bottom: var(--main-content-pad-vertical);
-      --toast-gap-bottom: var(--nav-total-height);
-      --fab-gap-top: 0px;
-    }
-  </style>
-
   <style id="theFocusVisiblePolyfillStyle" media="only x">
     /* polyfill */
     /* Note we have to use [data-focus-visible-added] rather than .focus-visible because
@@ -61,14 +50,6 @@
     :focus:not(:focus-visible).focus-after::after {
       display: none;
     }
-  </style>
-  <style id="theCenterNavStyle" media="only x">
-    @media (min-width: 992px) {
-      .main-nav-ul {
-        justify-content: center;
-      }
-    }
-  </style>
 
   <noscript>
     <style>

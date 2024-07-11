@@ -12,8 +12,6 @@ const persistedState = {
   currentInstance: null,
   currentRegisteredInstanceName: undefined,
   currentRegisteredInstance: undefined,
-  bottomNav: false,
-  centerNav: false,
   disableFavCounts: false,
   disableFollowerCounts: false,
   disableHotkeys: false,
