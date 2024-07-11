@@ -1,5 +1,4 @@
 import { instanceObservers } from './instanceObservers.js'
-import { timelineObservers } from './timelineObservers.js'
 import { notificationObservers } from './notificationObservers.js'
 import { autosuggestObservers } from './autosuggestObservers.js'
 import { notificationPermissionObservers } from './notificationPermissionObservers.js'
@@ -12,7 +11,6 @@ import { badgeObservers } from './badgeObservers.js'
 // Prevents circular dependencies and reduces the size of main.js
 export function loggedInObservers () {
   instanceObservers()
-  timelineObservers()
   wordFilterObservers()
   notificationObservers()
   autosuggestObservers()
