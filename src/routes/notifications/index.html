@@ -1,20 +1,33 @@
-<Title name="{intl.notifications}" />
+{#if $isUserLoggedIn}
+  <NotificationFilters filter="" />
+  <TimelinePage timeline="notifications" />
+{:else}
+<HiddenFromSSR>
+  <FreeTextLayout>
+    <h1>{intl.notifications}</h1>
 
-  <LazyPage {pageComponent} {params} />
-
+    <p>{intl.notificationsNotLoggedIn}</p>
+  </FreeTextLayout>
+  <div style="display: none">
+    <!-- TODO: this is just a hack so that `sapper export` knows to crawl these files -->
+    <a href="/notifications/mentions">{intl.notificationMentions}</a>
+  </div>
+</HiddenFromSSR>
+{/if}
 <script>
-  import Title from '../_components/Title.html'
-  import LazyPage from '../_components/LazyPage.html'
-  import pageComponent from '../_pages/notifications/index.html'
+  import FreeTextLayout from '../_components/FreeTextLayout.html'
+  import { store } from '../_store/store.js'
+  import HiddenFromSSR from '../_components/HiddenFromSSR.html'
+  import TimelinePage from '../_components/TimelinePage.html'
+  import NotificationFilters from '../_components/NotificationFilters.html'
 
   export default {
+    store: () => store,
     components: {
-
-      Title,
-      LazyPage
-    },
-    data: () => ({
-      pageComponent
-    })
+      FreeTextLayout,
+      HiddenFromSSR,
+      TimelinePage,
+      NotificationFilters
+    }
   }
 </script>

@@ -1,20 +1,29 @@
-<Title name="{intl.notifications}" />
+{#if $isUserLoggedIn}
+  <NotificationFilters filter="mentions" />
+  <TimelinePage timeline="notifications/mentions" />
+{:else}
+<HiddenFromSSR>
+  <FreeTextLayout>
+    <h1>{intl.notificationMentions}</h1>
 
-  <LazyPage {pageComponent} {params} />
-
+    <p>{intl.notificationMentionsNotLoggedIn}</p>
+  </FreeTextLayout>
+</HiddenFromSSR>
+{/if}
 <script>
-  import Title from '../_components/Title.html'
-  import LazyPage from '../_components/LazyPage.html'
-  import pageComponent from '../_pages/notifications/mentions.html'
+  import FreeTextLayout from '../_components/FreeTextLayout.html'
+  import { store } from '../_store/store.js'
+  import HiddenFromSSR from '../_components/HiddenFromSSR.html'
+  import TimelinePage from '../_components/TimelinePage.html'
+  import NotificationFilters from '../_components/NotificationFilters.html'
 
   export default {
+    store: () => store,
     components: {
-
-      Title,
-      LazyPage
-    },
-    data: () => ({
-      pageComponent
-    })
+      FreeTextLayout,
+      HiddenFromSSR,
+      TimelinePage,
+      NotificationFilters
+    }
   }
 </script>

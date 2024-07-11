@@ -1,20 +1,30 @@
-<Title name="{intl.status}" />
+{#if $isUserLoggedIn}
+  <TimelinePage timeline="status/{params.statusId}">
+    <DynamicPageBanner title="" ariaTitle="{intl.statusThreadPage}" />
+  </TimelinePage>
+{:else}
+  <HiddenFromSSR>
+    <FreeTextLayout>
+      <h1>{intl.status}</h1>
 
-  <LazyPage {pageComponent} {params} />
-
+      <p>{intl.statusNotLoggedIn}</p>
+    </FreeTextLayout>
+  </HiddenFromSSR>
+{/if}
 <script>
-  import Title from '../../_components/Title.html'
-  import LazyPage from '../../_components/LazyPage.html'
-  import pageComponent from '../../_pages/statuses/[statusId]/index.html'
+  import FreeTextLayout from '../../_components/FreeTextLayout.html'
+  import { store } from '../../_store/store.js'
+  import HiddenFromSSR from '../../_components/HiddenFromSSR.html'
+  import DynamicPageBanner from '../../_components/DynamicPageBanner.html'
+  import TimelinePage from '../../_components/TimelinePage.html'
 
   export default {
+    store: () => store,
     components: {
-
-      Title,
-      LazyPage
-    },
-    data: () => ({
-      pageComponent
-    })
+      FreeTextLayout,
+      HiddenFromSSR,
+      DynamicPageBanner,
+      TimelinePage
+    }
   }
 </script>

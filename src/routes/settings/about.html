@@ -1,20 +1,23 @@
-<Title name="{intl.about}" settingsPage={true} />
+<SettingsLayout page='settings/about' label="{intl.aboutApp}">
+  <div>
+    <h1>{intl.aboutApp}</h1>
 
-  <LazyPage {pageComponent} {params} />
+    <h2>Version {version}</h2>
 
+    {@html intl.aboutAppDescription}
+  </div>
+</SettingsLayout>
 <script>
-  import Title from '../_components/Title.html'
-  import LazyPage from '../_components/LazyPage.html'
-  import pageComponent from '../_pages/settings/about.html'
+  import SettingsLayout from '../_components/settings/SettingsLayout.html'
+
+  const version = process.env.PINAFORE_VERSION
 
   export default {
     components: {
-
-      Title,
-      LazyPage
+      SettingsLayout
     },
     data: () => ({
-      pageComponent
+      version
     })
   }
 </script>

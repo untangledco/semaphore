@@ -1,20 +1,26 @@
-<Title name="{intl.home}" />
-
-  <LazyPage {pageComponent} {params} />
-
+{#if $isUserLoggedIn}
+  <TimelineHomePage/>
+{:else}
+  <NotLoggedInHome/>
+{/if}
 <script>
-  import Title from './_components/Title.html'
-  import LazyPage from './_components/LazyPage.html'
-  import pageComponent from './_pages/index.html'
+  import NotLoggedInHome from './_components/NotLoggedInHome.html'
+  import { store } from './_store/store.js'
+  import TimelineHomePage from './_components/TimelineHomePage.html'
+  import { observe } from 'svelte-extras'
+  import { doQuickLoginIfNecessary } from './_actions/doQuickLoginIfNecessary.js'
 
   export default {
-    components: {
-
-      Title,
-      LazyPage
+    async oncreate () {
+      doQuickLoginIfNecessary()
     },
-    data: () => ({
-      pageComponent
-    })
+    store: () => store,
+    methods: {
+      observe
+    },
+    components: {
+      NotLoggedInHome,
+      TimelineHomePage
+    }
   }
 </script>

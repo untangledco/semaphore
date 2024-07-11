@@ -1,20 +1,32 @@
-<Title name="{intl.directMessages}" />
+{#if $isUserLoggedIn}
+  <TimelinePage timeline="direct">
+    {#if $pinnedPage !== '/direct'}
+      <DynamicPageBanner title="{intl.directMessages}" icon="#fa-envelope"/>
+    {/if}
+  </TimelinePage>
+{:else}
+  <HiddenFromSSR>
+    <FreeTextLayout>
+      <h1>{intl.directMessages}</h1>
 
-  <LazyPage {pageComponent} {params} />
-
+      <p>{intl.directMessagesNotLoggedIn}</p>
+    </FreeTextLayout>
+  </HiddenFromSSR>
+{/if}
 <script>
-  import Title from './_components/Title.html'
-  import LazyPage from './_components/LazyPage.html'
-  import pageComponent from './_pages/direct.html'
+  import TimelinePage from './_components/TimelinePage.html'
+  import FreeTextLayout from './_components/FreeTextLayout.html'
+  import { store } from './_store/store.js'
+  import HiddenFromSSR from './_components/HiddenFromSSR.html'
+  import DynamicPageBanner from './_components/DynamicPageBanner.html'
 
   export default {
+    store: () => store,
     components: {
-
-      Title,
-      LazyPage
-    },
-    data: () => ({
-      pageComponent
-    })
+      TimelinePage,
+      FreeTextLayout,
+      HiddenFromSSR,
+      DynamicPageBanner
+    }
   }
 </script>

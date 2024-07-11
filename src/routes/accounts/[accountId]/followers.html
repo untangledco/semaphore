@@ -1,26 +1,20 @@
-<!-- TODO: this should probably be formatted as intl rather than concatenated -->
-<Title name="{profileName}{intl.followers}" />
-
-  <LazyPage {pageComponent} {params} />
-
+<DynamicPageBanner title="{intl.followers}" />
+<AccountsListPage {accountsFetcher} />
 <script>
-  import Title from '../../_components/Title.html'
-  import LazyPage from '../../_components/LazyPage.html'
-  import pageComponent from '../../_pages/accounts/[accountId]/followers.html'
+  import { getFollowers } from '../../_api/followsAndFollowers.js'
+  import AccountsListPage from '../../_components/AccountsListPage.html'
+  import { store } from '../../_store/store.js'
+  import DynamicPageBanner from '../../_components/DynamicPageBanner.html'
 
   export default {
-    components: {
-
-      Title,
-      LazyPage
-    },
-    data: () => ({
-      pageComponent
-    }),
     computed: {
-      profileName: ({ $currentAccountProfile }) => {
-        return ($currentAccountProfile && ('@' + $currentAccountProfile.acct + ' · ')) || ''
-      }
+      accountId: ({ params }) => params.accountId,
+      accountsFetcher: ({ $currentInstance, $accessToken, accountId }) => () => getFollowers($currentInstance, $accessToken, accountId)
+    },
+    store: () => store,
+    components: {
+      AccountsListPage,
+      DynamicPageBanner
     }
   }
 </script>
