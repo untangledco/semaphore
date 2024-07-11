@@ -19,7 +19,6 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@stdlib/utils-noop": "^0.2.1",
-    "arrow-key-navigation": "^1.2.0",
     "cheerio": "1.0.0-rc.10",
     "circular-dependency-plugin": "^5.2.2",
     "events-light": "^1.0.5",

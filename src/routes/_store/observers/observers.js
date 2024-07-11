@@ -7,7 +7,6 @@ import { setupLoggedInObservers } from './setupLoggedInObservers.js'
 import { logOutObservers } from './logOutObservers.js'
 import { touchObservers } from './touchObservers.js'
 import { focusRingObservers } from './focusRingObservers.js'
-import { leftRightFocusObservers } from './leftRightFocusObservers.js'
 import { bottomNavObservers } from './bottomNavObservers.js'
 
 export function observers (store) {
@@ -19,7 +18,6 @@ export function observers (store) {
   touchObservers(store)
   logOutObservers(store)
   focusRingObservers(store)
-  leftRightFocusObservers(store)
   bottomNavObservers(store)
   setupLoggedInObservers(store)
 }
