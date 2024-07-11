@@ -446,7 +446,7 @@ export default {
   showRingPre: 'Always show',
   showRingText: 'focus ring',
   showRingDescription: `The focus ring is the outline showing the currently focused element. By default, it's only
-    shown when using the keyboard (not mouse or touch), but you may choose to always show it.`,
+    shown when using the keyboard (not mouse or touch).`,
   showRingPost: '',
   instances: 'Instances',
   addInstance: 'Add instance',

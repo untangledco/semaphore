@@ -36,10 +36,9 @@
   {#if !$isUserLoggedIn}
     <p>
       {intl.getAnInstancePre}
-      <Tooltip
-        text="{intl.getAnInstanceText}"
-        tooltipText="{intl.getAnInstanceDescription}"
-      />
+      <br>
+      {intl.getAnInstanceText}
+      <br><small>{intl.getAnInstanceDescription}</small>
       {intl.getAnInstancePost}
       <a rel="noopener" target="_blank" href="https://joinmastodon.org">{intl.joinMastodon}</a>
     </p>
@@ -85,7 +84,6 @@
   import { store } from '../../_store/store.js'
   import { logInToInstance, handleOauthCode } from '../../_actions/addInstance.js'
   import { testHasIndexedDB, testHasLocalStorage } from '../../_utils/testStorage.js'
-  import Tooltip from '../../_components/Tooltip.html'
 
   export default {
     async oncreate () {
@@ -102,7 +100,6 @@
     },
     components: {
       SettingsLayout,
-      Tooltip
     },
     store: () => store,
     data: () => ({
