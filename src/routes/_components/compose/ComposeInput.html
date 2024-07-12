@@ -69,7 +69,6 @@
   import { on } from '../../_utils/eventBus.js'
   import { requestPostAnimationFrame } from '../../_utils/requestPostAnimationFrame.js'
   import { throttleTimer } from '../../_utils/throttleTimer.js'
-  import { isWebKit } from '../../_utils/userAgent/isWebKit.js'
 
   const updateComposeTextInStore = throttleTimer(scheduleIdleTask)
 
@@ -261,17 +260,6 @@
       },
       setCursorIfNecessary () {
         const { realm } = this.get()
-        if (isWebKit() && realm !== 'dialog' && realm !== 'home') {
-          // Place the cursor at the end of the textarea in replies if this is WebKit.
-          // Works around a Safari/WebKit bug: https://github.com/nolanlawson/pinafore/issues/1921
-          // We only do this for replies (not dialog/home) because for dialog/home we don't want to
-          // also focus the textarea, which is a side effect of setting selectionStart.
-          // Potentially we could run this logic for all browsers, but I don't want to deal with the potential
-          // perf hit or bugs of running more code for browsers that don't need it.
-          requestAnimationFrame(() => {
-            this.refs.textarea.selectionStart = this.refs.textarea.value.length
-          })
-        }
       }
     },
     store: () => store,

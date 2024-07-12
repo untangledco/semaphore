@@ -3,7 +3,6 @@ import { computations } from './computations/computations.js'
 import { mixins } from './mixins/mixins.js'
 import { LocalStorageStore } from './LocalStorageStore.js'
 import { observe } from 'svelte-extras'
-import { isKaiOS } from '../_utils/userAgent/isKaiOS.js'
 
 const persistedState = {
   alwaysShowFocusRing: false,
@@ -22,7 +21,6 @@ const persistedState = {
   disableTapOnStatus: false,
   hideCards: false,
   largeInlineMedia: false,
-  leftRightChangesFocus: isKaiOS(),
   instanceNameInSearch: '',
   instanceSettings: {},
   loggedInInstances: {},

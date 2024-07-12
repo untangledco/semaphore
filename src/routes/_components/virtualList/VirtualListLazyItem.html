@@ -10,7 +10,6 @@
   import VirtualListItem from './VirtualListItem.html'
   import { scheduleIdleTask } from '../../_utils/scheduleIdleTask.js'
   import { createPriorityQueue } from '../../_utils/createPriorityQueue.js'
-  import { isMobile } from '../../_utils/userAgent/isMobile.js'
   import { store } from '../../_store/store.js'
 
   // In Svelte's implementation of lists, these VirtualListLazyItems can be
@@ -34,16 +33,7 @@
           const setProps = () => {
             this.set({ props })
           }
-          // On desktop, if prefers-reduced-motion is enabled, avoid using scheduleIdleTask
-          // here because it causes the scrollbar to grow in a way that may sicken
-          // people with vestibular disorders.
-          // TODO: someday we can use isInputPending as a better way to break up work
-          // https://www.chromestatus.com/feature/5719830432841728
-          if (!isMobile() && reduceMotion) {
-            setProps()
-          } else {
-            scheduleIdleTask(setProps)
-          }
+          setProps()
         })
       }
     },
