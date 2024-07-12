@@ -99,7 +99,6 @@
   import { store } from '../../_store/store.js'
   import AutoplayVideo from '../AutoplayVideo.html'
   import { registerClickDelegate } from '../../_utils/delegate.js'
-  import { convertCssPropertyToDataUrl } from '../../_utils/convertCssPropertyToDataUrl.js'
   import { formatIntl } from '../../_utils/formatIntl.js'
 
 export default {
@@ -136,16 +135,6 @@ export default {
       elementId: ({ media, uuid }) => `media-${uuid}-${media.id}`,
       description: ({ media }) => media.description || '',
       previewUrl: ({ media }) => media.preview_url,
-      decodedBlurhash: ({ media }) => media.decodedBlurhash,
-      blurhashToUse: ({ decodedBlurhash, $ignoreBlurhash }) => {
-        if (!$ignoreBlurhash && decodedBlurhash) {
-          return decodedBlurhash
-        }
-        // Convert the var(--loading-bg) variable into a data URL based on a single pixel of color
-        // TODO: this is hacky
-        return convertCssPropertyToDataUrl('--mask-bg')
-      },
-      blurhash: ({ blurhashToUse, showAsSensitive }) => showAsSensitive && blurhashToUse,
       url: ({ media }) => media.url,
       type: ({ media }) => media.type,
       inlineMediaStyle: ({ type, inlineWidth, inlineHeight, blurhash, $largeInlineMedia }) => {
