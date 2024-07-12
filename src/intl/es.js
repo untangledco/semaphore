@@ -325,47 +325,6 @@ export default {
   accountHasMoved: '{account} se ha trasladado:',
   profilePageForAccount: 'Página de perfil para {account}',
   verified: 'Verified',
-  // About page
-  about: 'Acerca de',
-  aboutApp: 'Acerca de Semaphore',
-  aboutAppDescription: `
-  <p>
-    Semaphore es
-    <a rel="noopener" target="_blank"
-      href="https://github.com/NickColley/semaphore">software de código abierto</a>
-    mantenido por
-    <a rel="noopener" target="_blank" href="https://nickcolley.co.uk"Nick Colley</a>
-    y distribuido bajo la
-    <a rel="noopener" target="_blank"
-      href="https://github.com/NickColley/semaphore/blob/main/LICENSE">Licencia AGPL</a>.
-    Aquí está la <a href="/settings/about#privacy-policy" rel="prefetch">política de privacidad</a>.
-    Es una continuación de Pinafore creado por
-      <a rel="noopener" target="_blank" href="https://nolanlawson.com">Nolan Lawson</a>.
-  </p>
-
-  <h2 id="privacy-policy">Política de privacidad</h2>
-
-  <p>
-    Semaphore no almacena ninguna información personal en sus servidores,
-    incluyendo, pero no limitándose a nombres, direcciones de correo electrónico,
-    direcciones IP, posts y fotos.
-  </p>
-
-  <p>
-    Semaphore es un sitio estático. Todos los datos son almacenados en tu navegador y compartidos con las instancias del fediverso
-    a las que te conectas.
-  </p>
-
-  <h2>Créditos</h2>
-
-  <p>
-    Iconos proporcionados por <a rel="noopener" target="_blank" href="http://fontawesome.io/">Font Awesome</a>.
-  </p>
-
-  <p>
-    Logo gracias a "Flag" por AFY Studio, de
-    <a rel="noopener" target="_blank" href="https://thenounproject.com/">the Noun Project</a>.
-  </p>`,
   // Settings
   settings: 'Opciones de configuración',
   general: 'General',
