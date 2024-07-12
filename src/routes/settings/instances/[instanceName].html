@@ -10,8 +10,6 @@
     <NotificationFilterSettings {instanceName} />
     <h2>{intl.wordFilters}</h2>
     <WordFilterSettings {instanceName} />
-    <h2>{intl.pushNotifications}</h2>
-    <PushNotificationSettings {instanceName} />
     <InstanceActions {instanceName} />
   {/if}
 </SettingsLayout>
@@ -28,7 +26,6 @@
   import InstanceUserProfile from '../../_components/settings/instance/InstanceUserProfile.html'
   import HomeTimelineFilterSettings from '../../_components/settings/instance/HomeTimelineFilterSettings.html'
   import NotificationFilterSettings from '../../_components/settings/instance/NotificationFilterSettings.html'
-  import PushNotificationSettings from '../../_components/settings/instance/PushNotificationSettings.html'
   import InstanceActions from '../../_components/settings/instance/InstanceActions.html'
   import WordFilterSettings from '../../_components/settings/instance/WordFilterSettings.html'
   import { updateVerifyCredentialsForInstance } from '../../_actions/instances.js'

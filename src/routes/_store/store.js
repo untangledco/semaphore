@@ -49,11 +49,6 @@ const nonPersistedState = {
   online: !process.browser || navigator.onLine,
   pinnedStatuses: {},
   polls: {},
-  pushNotificationsSupport:
-    process.browser &&
-    ('serviceWorker' in navigator &&
-      'PushManager' in window &&
-      'getKey' in window.PushSubscription.prototype),
   queryInSearch: '',
   repliesShown: {},
   sensitivesShown: {},
